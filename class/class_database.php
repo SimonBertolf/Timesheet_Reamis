@@ -1,6 +1,6 @@
 <?php
 
-class database
+class class_database
 {
     // User Daten
     private $host = 'localhost';
@@ -12,6 +12,15 @@ class database
     // Funktionen
     public function __construct()
     {
+        /// -------- Verbindungsaufbau --------
+        $this->mysql = new mysqli($this->host, $this->user, $this->pw, $this->db);
+
+        /// -------- Fehleranalyse --------
+        if ($this->mysql === false) {
+            die('Verbindungsfehler' . $this->mysql->connect_error . "<br />");
+        } else if ($this->mysql->connect_error) {
+            die('Fehler' . $this->mysql->connect_error . "<br />");
+        }
     }
 
     public function close_connection()
@@ -20,19 +29,5 @@ class database
         $this->mysql->close();
     }
 
-    public function open_connection()
-    {
-    /// -------- Verbindungsaufbau --------
-    $this->mysql = new mysqli($this->host, $this->user, $this->pw, $this->db);
-
-    /// -------- Fehleranalyse --------
-        if ($this->mysql === false) {
-            die('Verbindungsfehler' . $this->mysql->connect_error . "<br />");
-        }
-        else if ($this->mysql->connect_error) {
-            die('Fehler' . $this->mysql->connect_error . "<br />");
-        }
-    }
 }
-
 

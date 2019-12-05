@@ -14,8 +14,8 @@ require_once '../system/system_login.php';
             </div>
             <div>
                 <form method="post" class="div_flex_colum">
-                    <input class="input_01" id="login" type="email" name="email" placeholder="E-mail" required>
-                    <input class="input_01" id="login" type="password" name="pasword" placeholder="Passwort" required>
+                    <input class="input_01" id="login" type="text" name="username" placeholder="Username" required>
+                    <input class="input_01" id="login" type="password" name="password" placeholder="Password" required>
                     <button class="button_01" id="login" name="login">Login</button>
                     <p class="font_error"><?php if (isset($errorMessage)){ echo$errorMessage;}?></p>
                 </form>
