@@ -16,7 +16,6 @@ class class_time
         $this->diff = $this->start->diff($this->stop);
 
         $this->work_time = $this->diff->format("%h").'.'.$this->diff->format("%I")/6*10;
-        echo $this->work_time;
         return $this->work_time;
     }
 
