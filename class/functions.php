@@ -19,3 +19,17 @@ function pick_project($userid){
     $db->close_connection();
     return $query_project;
 }
+
+
+function pick_time($projectname){
+    $db = new class_database();
+    $query_time = $db->mysql->query("SELECT time.id, time.time, task FROM time LEFT JOIN project ON project.id = time.projectid WHERE projectname = '$projectname'");
+    $db->close_connection();
+    return $query_time;
+}
+
+function delet_time($id){
+    $db = new class_database();
+    $db->mysql->query("DELETE FROM time WHERE id = $id");
+    $db->close_connection();
+}

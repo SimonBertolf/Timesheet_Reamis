@@ -24,7 +24,8 @@ require_once '../system/system_mainpage.php';
         </div>
         <div class="button_02_slider" id='1' >Menue</div>
         <div class="div_slider" id="2">
-            <form method="post">
+            <form method="post" class="div_flex_colum">
+                <button class="button_01" id="navigation" name="edit">Edit</button>
                 <button class="button_01" id="navigation" name="logout">Logout</button>
             </form>
         </div>
