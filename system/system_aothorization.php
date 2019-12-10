@@ -3,7 +3,7 @@ require_once '../class/class_database.php';
 require_once '../class/class_time.php';
 require_once '../class/functions.php';
 session_start();
-///Navigator
+
 if (isset($_POST['logout'])){
     header('Location: ../page/page_login.php');
 }
@@ -16,10 +16,6 @@ if (isset($_POST['record'])){
 if (isset($_POST['report'])){
     header('Location: ../page/page_report.php');
 }
-if (isset($_POST['auto'])){
-    header('Location: ../page/page_authorization.php');
-}
-$query = pick_all_project();
-if (isset($_POST['add'])){
-    add_project($_POST['projectname'],$_POST['description'],$_POST['budget']);
+if (isset($_POST['project'])){
+    header('Location: ../page/page_project.php');
 }

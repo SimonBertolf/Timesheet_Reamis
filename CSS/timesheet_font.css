@@ -46,7 +46,6 @@ td,th{
 
 .toggle .slider:before {
     /* verschiebbarer Button */
-
     position: absolute;
     content: "";
     height: 1.6em;
@@ -55,7 +54,7 @@ td,th{
     bottom: 0.2em;
     background-color: #383838;
     border-radius: 50%;
-    transition: all .3s ease-in-out;
+    transition: all .1s ease-in-out;
 }
 
 .toggle input:checked + .slider {
@@ -71,20 +70,18 @@ td,th{
 
 .text .slider:after {
     /* Text vor dem FlipFlop-Schalter */
-
     position: absolute;
     content: "Archiveiert";
     color: #383838;
     font-weight: bold;
     height: 1.6em;
-    left: 0em;
     bottom: 1.7em;
+    left: 0em;
     font-family: "Century Gothic";
 }
 
 .text input:checked + .slider:after {
     /* Text hinter dem FlipFlop-Schalter */
-
     position: absolute;
     content: "Aktiv";
     color: #383838;

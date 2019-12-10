@@ -31,21 +31,21 @@ if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
             function drawChart() {
                 var data = google.visualization.arrayToDataTable([
                     ['user', 'zeit'],
-                    ['Test1', '2'],
-                    ['Test2', '4'],
-                    ['Test3', '6'],
+                    ['t', 10],
+                    ['t2', 20],
+                    ['t6', 50],
 
                 ]);
                 var options = {
                     'title': '<?php echo($_POST['project']);?>',
-                    colors: ['#404545','#202525','#1B1D1F'],
+                    colors: ['#909090','#404545','#1B1D1F'],
                     'backgroundColor': 'transparent',
                     'borderColor': '#383838',
                     'width': 150, 'height': 150,
                     chartArea:{left:10,top:10,width:'100%',height:'100%'},
                     legend: {position: 'bottom', textStyle: {color: '#AC2D2D', fontSize: 12}},
                     pieHole: 0.6,
-                    pieSliceBorderColor: '#AC2D2D',
+                    pieSliceBorderColor: undefined,
                     titleTextStyle:{
                         color: '#383838',
                         bold: true,
@@ -72,6 +72,7 @@ if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
                 <button class="button_01" id="navigation" name="record">Time Recording</button>
                 <button class="button_01" id="navigation" name="edit">Edit</button>
                 <button class="button_01" id="navigation" name="report">Report</button>
+                <button class="button_01" id="navigation" name="auto">Authorization</button>
                 <button class="button_01" id="navigation" name="main">Mainpage</button>
                 <button class="button_01" id="navigation" name="logout">Logout</button>
             </form>
@@ -98,21 +99,19 @@ if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
             <div class="div_right" >
                 <?php
                 if (isset($_POST['project'])) {
-                echo '<p class="font_01">'.$_POST['project'].'<p>';
+                    echo '<p class="font_01">'.$_POST['project'].'<p>';
                 ?>
-
-
+                    <p>projecktbeschreibung </p>
                 <div class="toggle text">
                 <label>
                     <input type="checkbox"> <span class="slider"></span>
                 </label>
                 </div>
-      <?php
-
+                         <?php
                         // echo '<div id="piechart">';
                         ?>
                         <form method="post">
-                            <button class="button_01" id="button_project" name="delete">Delete</button>
+                            <button class="button_01" id="button_project" type="submit" name="delete">Delete</button>
                         </form>
                         <div>
                         </div>
