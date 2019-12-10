@@ -44,7 +44,7 @@ require_once '../system/system_edit.php';
     </div>
     <div class="div_table">
         <table>
-            <tr><th>ID</th><th>Zeit</th><th>Datum</th><th>Beschreibung</th></tr>
+            <tr><th>ID</th><th>Datum</th><th>Zeit</th><th>Beschreibung</th></tr>
         <?php
         while ($res = $query_time->fetch_assoc()) {
             echo '<tr>';
