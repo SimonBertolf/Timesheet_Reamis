@@ -14,5 +14,10 @@ if (isset($_POST['delete'])){
     delet_time($_POST['timeid']);
 }
 
+if (isset($_POST['record'])){
+    header('Location: ../page/page_recording.php');
+}
+
+
 $query_project = pick_project($_SESSION['user_id']);
 $query_time = pick_time($_POST['projectname']);

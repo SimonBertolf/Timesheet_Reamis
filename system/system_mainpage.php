@@ -11,11 +11,6 @@ header('Location: ../page/page_login.php');
 if (isset($_POST['edit'])){
     header('Location: ../page/page_edit.php');
 }
-
-/// projekte abfragen
-$query_project = pick_project($_SESSION['user_id']);
-
-/// Einschreiben
-if (isset($_POST['save'])) {
-    time_drawing($_SESSION['user_id'], $_POST['date'], $_POST['description']);
+if (isset($_POST['record'])){
+    header('Location: ../page/page_recording.php');
 }

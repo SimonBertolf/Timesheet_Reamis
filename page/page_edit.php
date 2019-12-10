@@ -26,6 +26,7 @@ require_once '../system/system_edit.php';
     <div class="div_slider" id="2">
         <form method="post" class="div_flex_colum">
             <button class="button_01" id="navigation" name="main">Mainpage</button>
+            <button class="button_01" id="navigation" name="record">Time Record</button>
             <button class="button_01" id="navigation" name="logout">Logout</button>
         </form>
     </div>
@@ -43,11 +44,12 @@ require_once '../system/system_edit.php';
     </div>
     <div class="div_table">
         <table>
-            <tr><th>id</th><th>Zeit</th><th>Beschreibung</th></tr>
+            <tr><th>ID</th><th>Zeit</th><th>Datum</th><th>Beschreibung</th></tr>
         <?php
         while ($res = $query_time->fetch_assoc()) {
             echo '<tr>';
             echo '<td>' . $res['id'] . '</td>';
+            echo '<td>' . $res['date'] . '</td>';
             echo '<td>' . $res['time'] . '</td>';
             echo '<td>' . $res['task'] . '</td>';
             echo '</tr>';
