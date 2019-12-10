@@ -14,3 +14,9 @@ if (isset($_POST['edit'])){
 if (isset($_POST['record'])){
     header('Location: ../page/page_recording.php');
 }
+if (isset($_POST['project'])){
+    header('Location: ../page/page_project.php');
+}
+if (isset($_POST['report'])){
+    header('Location: ../page/page_report.php');
+}

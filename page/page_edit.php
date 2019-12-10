@@ -1,5 +1,6 @@
 <?php
 require_once '../system/system_edit.php';
+if ($_SESSION['user_typ'] == 'standard' || $_SESSION['user_typ'] == 'controller'|| $_SESSION['user_typ'] == 'admin'){
 ?>
 <html>
 <head>
@@ -70,3 +71,7 @@ require_once '../system/system_edit.php';
 </footer>
 
 </html>
+    <?php
+}else{
+    header('Location:../page/page_login.php');
+}

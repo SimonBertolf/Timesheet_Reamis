@@ -1,5 +1,6 @@
 <?php
 require_once '../system/system_recording.php';
+if ($_SESSION['user_typ'] == 'standard' || $_SESSION['user_typ'] == 'controller'|| $_SESSION['user_typ'] == 'admin'){
 ?>
 <html>
 <head>
@@ -44,6 +45,7 @@ require_once '../system/system_recording.php';
                 </select>
                 <input class="input_01" id="navigation" type="text" name="description" placeholder="Description">
                 <button class="button_01" id="navigation" name="save">save</button>
+
             </form>
 
         </div>
@@ -55,3 +57,7 @@ require_once '../system/system_recording.php';
 </footer>
 
 </html>
+<?php
+}else{
+    header('Location:../page/page_login.php');
+}
