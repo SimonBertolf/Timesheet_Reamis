@@ -13,7 +13,6 @@ if (isset($_POST['main'])){
 if (isset($_POST['delete'])){
     delet_time($_POST['timeid']);
 }
-
 if (isset($_POST['record'])){
     header('Location: ../page/page_recording.php');
 }

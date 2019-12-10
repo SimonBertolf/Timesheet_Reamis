@@ -22,6 +22,13 @@ function pick_project($userid){
     return $query_project;
 }
 
+function pick_all_project(){
+    $db = new class_database();
+    $query_all_project = $db->mysql->query("SELECT * FROM project");
+    $db->close_connection();
+    return $query_all_project;
+}
+
 function pick_time($projectname){
     $db = new class_database();
     $query_time = $db->mysql->query("SELECT time.id, time.time, task, time.date FROM time LEFT JOIN project ON project.id = time.projectid WHERE projectname = '$projectname'");
@@ -33,4 +40,24 @@ function delet_time($id){
     $db = new class_database();
     $db->mysql->query("DELETE FROM time WHERE id = $id");
     $db->close_connection();
+}
+function add_project($projectname, $description, $budget){
+    $db = new class_database();
+    $db->mysql->query("INSERT INTO project (projectname, description, budget) VALUE ('$projectname','$description','$budget')");
+    $db->close_connection();
+}
+
+function chart_project($projectname){
+    $db = new class_database();
+    $query_project_chart = $db->mysql->query("SELECT * from time LEFT JOIN project ON project.id = time.projectid WHERE projectname = '$projectname' ");
+    $db->close_connection();
+    return $query_project_chart;
+}
+function delet_project($project){
+    $db = new class_database();
+    $db->mysql->query("DELETE FROM project WHERE projectname = '$project'");
+    $db->close_connection();
+}
+function archive_project(){
+
 }

@@ -71,6 +71,16 @@ th, td {
     overflow-x: hidden;
 }
 
+.div_left{
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+}
+.div_right{
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+}
 #around{
     justify-content: space-around;
 }
@@ -119,6 +129,15 @@ th, td {
     font-weight: bold;
     color: #383838;
 }
+.button_03_slider {
+     margin-top: 1px;
+     height: 30px;
+     font-family: "Century Gothic";
+     background-color: #8D8D8D;
+     font-size: 15px;
+     font-weight: bold;
+     color: #383838;
+ }
 
 #login{
     background-color: #8D8D8D;
@@ -133,6 +152,14 @@ th, td {
     border: unset;
     font-weight: bold;
     color: #383838;
+}
+#button_project{
+    background-color: #8D8D8D;
+    border-radius: 8px;
+    border: unset;
+    font-weight: bold;
+    color: #383838;
+    width: 100px;
 }
 
 /*Buttons Ende*/
