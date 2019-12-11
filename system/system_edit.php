@@ -16,7 +16,15 @@ if (isset($_POST['delete'])){
 if (isset($_POST['record'])){
     header('Location: ../page/page_recording.php');
 }
-
+if (isset($_POST['report'])){
+    header('Location: ../page/page_report.php');
+}
+if (isset($_POST['project'])){
+    header('Location: ../page/page_project.php');
+}
+if (isset($_POST['auto'])){
+    header('Location: ../page/page_authorization.php');
+}
 
 $query_project = pick_project($_SESSION['user_id']);
 $query_time = pick_time($_POST['projectname']);

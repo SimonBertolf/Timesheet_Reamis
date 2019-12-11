@@ -28,6 +28,8 @@ if ($_SESSION['user_typ'] == 'standard' || $_SESSION['user_typ'] == 'controller'
         <form method="post" class="div_flex_colum">
             <button class="button_01" id="navigation" name="main">Mainpage</button>
             <button class="button_01" id="navigation" name="record">Time Record</button>
+            <button class="button_01" id="navigation" name="project">Project</button>
+            <button class="button_01" id="navigation" name="report">Report</button>
             <button class="button_01" id="navigation" name="logout">Logout</button>
         </form>
     </div>

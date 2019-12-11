@@ -15,6 +15,12 @@ if (isset($_POST['main'])){
     header('Location: ../page/page_mainpage.php');
 }
 
+if (isset($_POST['project'])){
+    header('Location: ../page/page_project.php');
+}
+if (isset($_POST['report'])){
+    header('Location: ../page/page_report.php');
+}
 /// projekte abfragen
 $query_project = pick_project($_SESSION['user_id']);
 

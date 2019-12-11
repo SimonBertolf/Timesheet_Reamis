@@ -80,6 +80,12 @@ th, td {
     width: 50vw;
     display: flex;
     flex-direction: column;
+    text-align: left;
+}
+#left{
+    text-align: left;
+    margin-left: -30px;
+    margin-top: 30px;
 }
 #around{
     justify-content: space-around;
@@ -95,6 +101,9 @@ th, td {
     position: absolute;
     horiz-align: center;
     bottom: 40px;
+}
+#delete{
+    margin-top: -10px;
 }
 /*DIVs Ende*/
 
@@ -153,6 +162,7 @@ th, td {
     font-weight: bold;
     color: #383838;
 }
+
 #button_project{
     background-color: #8D8D8D;
     border-radius: 8px;

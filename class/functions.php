@@ -48,16 +48,22 @@ function add_project($projectname, $description, $budget){
 }
 
 function chart_project($projectname){
+    $total_time = 0;
     $db = new class_database();
     $query_project_chart = $db->mysql->query("SELECT * from time LEFT JOIN project ON project.id = time.projectid WHERE projectname = '$projectname' ");
     $db->close_connection();
-    return $query_project_chart;
+        while ($res = $query_project_chart->fetch_assoc()){
+            $total_time += $res['time'];
+        }
+    return $total_time;
 }
 function delet_project($project){
     $db = new class_database();
     $db->mysql->query("DELETE FROM project WHERE projectname = '$project'");
     $db->close_connection();
 }
+
+
 function archive_project(){
 
 }

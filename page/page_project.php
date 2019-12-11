@@ -24,38 +24,41 @@ if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
             });
         </script>
 
+
+
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
-            google.charts.load('current', {'packages': ['corechart']});
+            google.charts.load('current', {'packages':['bar']});
             google.charts.setOnLoadCallback(drawChart);
+
             function drawChart() {
                 var data = google.visualization.arrayToDataTable([
-                    ['user', 'zeit'],
-                    ['t', 10],
-                    ['t2', 20],
-                    ['t6', 50],
-
+                    [' ','Soll', 'Ist',],
+                    <?php
+                    echo ("['Soll/Ist',".$project_budget.",".$ist_time."],");
+                    ?>
                 ]);
+
                 var options = {
-                    'title': '<?php echo($_POST['project']);?>',
-                    colors: ['#909090','#404545','#1B1D1F'],
+                    title: ' ',
+                    colors: ['#777777','#202525'],
                     'backgroundColor': 'transparent',
-                    'borderColor': '#383838',
-                    'width': 150, 'height': 150,
-                    chartArea:{left:10,top:10,width:'100%',height:'100%'},
-                    legend: {position: 'bottom', textStyle: {color: '#AC2D2D', fontSize: 12}},
-                    pieHole: 0.6,
-                    pieSliceBorderColor: undefined,
+                    'borderColor': '#AC2D2D',
+                    'width': 200, 'height': 200,
+                    legend: {position: 'bottom',
+                        textStyle: {color: '#383838', fontSize: 10, fontFamily: 'Century Gothic',}},
                     titleTextStyle:{
                         color: '#383838',
                         bold: true,
                         fontSize: 12,
                     }
                 };
-                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-                chart.draw(data, options);
+                var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+                chart.draw(data, google.charts.Bar.convertOptions(options));
             }
         </script>
+
+
 
 
         <title>TimeSheet</title>
@@ -97,37 +100,26 @@ if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
                 </form>
             </div>
             <div class="div_right" >
-                <?php
-                if (isset($_POST['project'])) {
-                    echo '<p class="font_01">'.$_POST['project'].'<p>';
-                ?>
-                    <p>projecktbeschreibung </p>
-                <div class="toggle text">
-                <label>
-                    <input type="checkbox"> <span class="slider"></span>
-                </label>
+                <div>
+                 <?php
+                    if (isset($_POST['project'])) {
+                 echo '<p class="font_01">'.$project_name.'<p>';
+                 echo '<p class="font_02">'.$project_description.'<p>';
+                 echo '<p class="font_02">Projectnumber: '.$project_nr.'<p>';
+                 echo '<p class="font_02">Timebudget: '.$project_budget.' Stunden<p>';
+                    ?>
+                 </div>
+                <div id="columnchart_material"></div>
+                     <form method="post" id="delete">
+                         <button class="button_01" id="button_project" name="archive">Archive <?php echo $project_archive ?></button>
+                     </form>
+                 </div>
+                 <?php
+                 }
+                 ?>
                 </div>
-                         <?php
-                        // echo '<div id="piechart">';
-                        ?>
-                        <form method="post">
-                            <button class="button_01" id="button_project" type="submit" name="delete">Delete</button>
-                        </form>
-                        <div>
-                        </div>
-                        <?php
-                        if (isset($_POST['delete'])){
-                            $project = $_POST['project'];
-                            delet_project($project);
-                        }
-                    }
-                ?>
-            </div>
-                </div>
-            </div>
-
         </div>
-    </div>
+        </div>
     </body>
 
     <footer>
