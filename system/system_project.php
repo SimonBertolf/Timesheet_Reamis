@@ -10,7 +10,6 @@ if (isset($_POST['add'])){
 }
 
 if (isset($_POST['project'])) {
-
     $db = new class_database();
     $projectname = $_POST['project'];
     $query_info = $db->mysql->query("SELECT * FROM project LEFT JOIN time ON time.projectid = project.id WHERE projectname = '$projectname'")->fetch_assoc();
@@ -29,7 +28,6 @@ if (isset($_POST['archive'])){
     $project_name = $_SESSION['projectname'];
     $query_archive = $db->mysql->query("SELECT * FROM project WHERE projectname = '$project_name'")->fetch_assoc();
     $archive = $query_archive['archive'];
-
 
     if ($archive == 'false') {
         $query_info = $db->mysql->query("UPDATE project SET archive = 'true' WHERE projectname = '$project_name'");
