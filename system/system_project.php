@@ -24,12 +24,8 @@ $query = pick_all_project();
 if (isset($_POST['add'])){
     add_project($_POST['projectname'],$_POST['description'],$_POST['budget']);
 }
+
 if (isset($_POST['project'])) {
-    $_SESSION['aktiv'] = $_POST['project'];
-}
-
-
-if (isset($_SESSION['aktiv'])) {
 
     $db = new class_database();
     $projectname = $_POST['project'];

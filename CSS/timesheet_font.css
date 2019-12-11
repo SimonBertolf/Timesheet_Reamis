@@ -21,8 +21,21 @@
     color: #383838;
     text-align: left;
 }
+.font_03{
+    font-family: "Century Gothic";
+    font-size: 15px;
+    color: #383838;
+    text-align: left;
+}
 td,th{
     font-family: "Century Gothic";
     font-size: 11px;
     color: #383838;
+}
+.font_04{
+    font-family: "Century Gothic";
+    font-size: 15px;
+    color: #383838;
+    text-align: left;
+    margin-top: -10px;
 }

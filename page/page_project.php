@@ -117,8 +117,7 @@ if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
                  <?php
                  }
                  ?>
-                </div>
-        </div>
+            </div>
         </div>
     </body>
 

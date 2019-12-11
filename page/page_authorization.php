@@ -34,10 +34,49 @@ if ($_SESSION['user_typ'] == 'controller'){
                 <button class="button_01" id="navigation" name="logout">Logout</button>
             </form>
         </div>
-        <div>
-            nmdnd
 
+        <div class="div_flex_row">
+            <div class="div_left">
+                <form method="post" class="div_flex_colum">
+                    <?php
+                    while ($res = $query->fetch_assoc()){
+                        echo ('<button class="button_01" id="button_project" name="project_name" value='.$res['projectname'].'>'.$res['projectname'].'</button>');
+                    }
+                    ?>
+                </form>
+            </div>
+            <div class="div_right" >
+                <div class="div_flex_colum">
+                    <p class="font_01">Authentifikation</p>
+                    <?php
+                    echo '<p class="font_04">Project: '.$_POST['project_name'].'</p>';
+
+                    if (isset($_POST['project_name'])) {
+                        while ($res_user = $query_all_user->fetch_assoc()){
+                                $userid = $res_user['id'];
+                                $query_project = pick_one_project($_POST['project_name']);
+                                $projectid =  $query_project['id'];
+                                $db = new class_database();
+                                $query_authentifikation = $db->mysql->query("SELECT * from authorization WHERE userid = '$userid' and projectid ='$projectid' ")->fetch_assoc();
+                            if ($query_authentifikation){
+                                $authentifikation = 'Ja';
+                            }
+                            else{
+                                $authentifikation = 'Nein';
+                            }
+                            echo '<form method="post" class="div_flex_row">
+                                            <p class="font_03">'.$res_user['name'].' </p>
+                                            <button class="button_01" id="button_auto" name="ident" value="'.$res_user['id'].'">'.$authentifikation.'</button>
+                                  </form>';
+                        }
+                    ?>
+                </div>
+            </div>
+            <?php
+            }
+            ?>
         </div>
+
     </div>
     </body>
 

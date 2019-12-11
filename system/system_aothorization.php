@@ -19,3 +19,14 @@ if (isset($_POST['report'])){
 if (isset($_POST['project'])){
     header('Location: ../page/page_project.php');
 }
+
+$query = pick_all_project();
+$query_all_user = pick_all_user();
+
+
+
+
+if (isset($_POST['ident'])) {
+ $userid = $_POST['ident'];
+}
+

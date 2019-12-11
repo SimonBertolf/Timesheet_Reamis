@@ -1,6 +1,5 @@
 <?php
 
-/// Zeit reinschreiben
 function time_drawing($userid, $date, $description)
 {
     $db = new class_database();
@@ -14,19 +13,29 @@ function time_drawing($userid, $date, $description)
     $db->close_connection();
 }
 
-///Projekte auslesen
 function pick_project($userid){
     $db = new class_database();
     $query_project = $db->mysql->query("SELECT * FROM project LEFT JOIN authorization ON project.id = authorization.projectid WHERE archive = 'false' AND userid = '$userid'");
     $db->close_connection();
     return $query_project;
 }
-
+function pick_all_user(){
+    $db = new class_database();
+    $query_all_user = $db->mysql->query("SELECT * FROM user");
+    $db->close_connection();
+    return $query_all_user;
+}
 function pick_all_project(){
     $db = new class_database();
     $query_all_project = $db->mysql->query("SELECT * FROM project");
     $db->close_connection();
     return $query_all_project;
+}
+function pick_one_project($projectname){
+    $db = new class_database();
+    $query_one_project = $db->mysql->query("SELECT * FROM project WHERE projectname = '$projectname'")->fetch_assoc();
+    $db->close_connection();
+    return $query_one_project;
 }
 
 function pick_time($projectname){
@@ -56,14 +65,4 @@ function chart_project($projectname){
             $total_time += $res['time'];
         }
     return $total_time;
-}
-function delet_project($project){
-    $db = new class_database();
-    $db->mysql->query("DELETE FROM project WHERE projectname = '$project'");
-    $db->close_connection();
-}
-
-
-function archive_project(){
-
 }
