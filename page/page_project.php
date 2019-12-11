@@ -50,15 +50,15 @@ if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
                 <div>
                  <?php
                  if (isset($_POST['project'])) {
-                     echo '<p class="font_01">'.$project_name.'<p>';
-                     echo '<p class="font_02">'.$project_description.'<p>';
-                     echo '<p class="font_02">Projectnumber: '.$project_nr.'<p>';
-                     echo '<p class="font_02">Timebudget: '.$project_budget.' Stunden<p>';
+                     echo '<p class="font_01">'.$project['projectname'].'<p>';
+                     echo '<p class="font_02">'.$project['description'].'<p>';
+                     echo '<p class="font_02">Projectnumber: '.$project['nr'].'<p>';
+                     echo '<p class="font_02">Timebudget: '.$project['budget'].' Stunden<p>';
                  ?>
                  </div>
                 <div id="columnchart_material"></div>
                      <form method="post" id="delete">
-                         <button class="button_01" id="button_project" name="archive">Archive <?php echo $project_archive ?></button>
+                         <button class="button_01" id="button_project" name="archive">Archive <?php echo $project['archive'] ?></button>
                      </form>
                  </div>
                  <?php
