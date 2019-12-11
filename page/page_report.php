@@ -1,5 +1,6 @@
 <?php
 require_once '../system/system_report.php';
+require_once '../class/navigation.php';
 if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
 ?>
 <html>

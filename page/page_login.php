@@ -1,5 +1,6 @@
 <?php
 require_once '../system/system_login.php';
+require_once '../class/navigation.php';
 ?>
 <html>
     <head>
