@@ -40,15 +40,10 @@ if (isset($_GET['Test'])) {
     $query_info = $db->mysql->query("SELECT * FROM project LEFT JOIN time ON time.projectid = project.id WHERE projectname = '$projectname'")->fetch_assoc();
     $_SESSION['name'] = $project['projectname'] = $query_info['projectname'];
     $project['description'] = $query_info['description'];
-    $project['budget'] = $query_info['budget'];
+    $soll_time = $project['budget'] = $query_info['budget'];
     $project['archive'] = $query_info['archive'];
     $project['nr'] = $query_info['projectnr'];
     $ist_time = chart_project($project['projectname']);
     $db->close_connection();
-         ?>
-        <script type="text/javascript">
-            var soll = <? echo $project['budget']; ?>;
-            var ist = <? echo $ist_time; ?>;
-        </script>
-<?php
 }
+

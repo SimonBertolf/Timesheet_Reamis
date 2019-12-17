@@ -3,6 +3,7 @@ require_once '../system/system_project.php';
 require_once '../class/navigation.php';
 
 if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
+
 ?>
 <html>
 <head>
@@ -11,6 +12,36 @@ if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="../CSS/java.js"></script>
+    <script type="text/javascript">
+        //Barchart
+        google.charts.load('current', {'packages':['bar']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                [' ','Soll', 'Ist',],
+                <?php
+                echo("['Soll/Ist',".$soll_time.", ".$ist_time."],");
+                ?>
+            ]);
+            var options = {
+                title: ' ',
+                colors: ['#777777','#202525'],
+                'backgroundColor': 'transparent',
+                'borderColor': '#AC2D2D',
+                'width': 200, 'height': 200,
+                legend: {position: 'bottom',
+                    textStyle: {color: '#383838', fontSize: 10, fontFamily: 'Century Gothic',}},
+                titleTextStyle:{
+                    color: '#383838',
+                    bold: true,
+                    fontSize: 12,
+                }
+            };
+            var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+    </script>
     <title>TimeSheet</title>
 </head>
 <body id="start">
