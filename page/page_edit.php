@@ -27,7 +27,7 @@ if ($_SESSION['user_typ'] == 'standard' || $_SESSION['user_typ'] == 'controller'
         </div>
         <!--     Content       -->
         <div>
-            <form method="post" class="div_flex_colum">
+            <form method="get" class="div_flex_colum">
                 <select class="input_01" id="navigation" name="projectname">
                     <?php
                     while ($res = $query_project->fetch_assoc()){
@@ -56,7 +56,7 @@ if ($_SESSION['user_typ'] == 'standard' || $_SESSION['user_typ'] == 'controller'
         <div>
             <form method="post" class="div_flex_colum">
                 <input class="input_01" id="navigation" type="number" name="timeid" placeholder="ID">
-                <button class="button_01" id="navigation" name="delete">Delete</button>
+                <button class="button_01" id="navigation" name="entf">Delete</button>
             </form>
         </div>
     </div>
