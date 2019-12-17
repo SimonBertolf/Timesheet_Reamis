@@ -27,6 +27,11 @@ if (isset($_SESSION['user_typ'])) {
         </div>
         <!--     Content       -->
         <div>
+            <?php
+                echo '<p class="font_01">Wilkommen '.$_SESSION['user_name'].'</p>';
+                echo '<p class="font_03">Dein username ist: '.$_SESSION['user_username'].'</p>';
+                echo '<p class="font_03">Dein Tagessoll beträgt '.$_SESSION['user_quote'].'</p>';
+            ?>
         </div>
     </div>
 </body>
