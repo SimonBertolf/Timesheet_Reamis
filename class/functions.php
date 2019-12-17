@@ -112,3 +112,10 @@ function set_status($user_name){
     }
     $db->close_connection();
 }
+
+function report_time($projectid,$userid){
+    $db = new class_database();
+    $query_report_time = $db->mysql->query("SELECT * FROM time WHERE projectid = '$projectid' AND userid = '$userid'");
+    $db->close_connection();
+    return $query_report_time;
+}

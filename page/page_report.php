@@ -26,7 +26,10 @@ if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
         </div>
         <!--     Content       -->
         <div>
-          Report funktion coming soon ;)
+            <form method="get">
+                <button name="project_report">Projekte</button>
+                <button>Monat pro benutzer</button>
+            </form>
         </div>
     </div>
 </body>
