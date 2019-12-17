@@ -17,7 +17,7 @@ if ($_SESSION['user_typ'] == 'standard' || $_SESSION['user_typ'] == 'controller'
         <div>
             <img id="image_main" src="../image/fimesheet_font.svg" >
         </div>
-        <div class="button_02_slider" id='1' >Menue</div>
+        <div class="button_02_slider" id='1'>Menue</div>
         <div class="div_slider" id="2">
             <form method="post" class="div_flex_colum">
                 <?php
@@ -55,7 +55,7 @@ if ($_SESSION['user_typ'] == 'standard' || $_SESSION['user_typ'] == 'controller'
         </div>
         <div>
             <form method="post" class="div_flex_colum">
-                <input class="input_01" id="navigation" type="number" name="timeid" placeholder="ID">
+                <input class="input_01" id="navigation" type="number" name="timeid" placeholder="ID" required>
                 <button class="button_01" id="navigation" name="entf">Delete</button>
             </form>
         </div>
