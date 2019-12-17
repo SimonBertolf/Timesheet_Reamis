@@ -57,7 +57,7 @@ if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
                  ?>
                  </div>
                 <div id="columnchart_material"></div>
-                     <form method="post" id="delete" action="page_project.php?Test=<?php echo $_SESSION['name'];?>">
+                     <form method="post" id="delete">
                          <button class="button_01" id="button_project" name="archive">Archive <?php echo $project['archive'] ?></button>
                      </form>
                  </div>
