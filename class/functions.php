@@ -1,5 +1,4 @@
 <?php
-
 function time_drawing($userid, $date, $description)
 {
     $db = new class_database();
@@ -65,4 +64,25 @@ function chart_project($projectname){
             $total_time += $res['time'];
         }
     return $total_time;
+}
+
+function authorization($project_name, $user_id)
+{
+    $db = new class_database();
+    $query_authorization = $db->mysql->query("SELECT * FROM authorization LEFT JOIN  project ON project.id = authorization.projectid WHERE projectname = '$project_name' AND authorization.userid = '$user_id'")->fetch_assoc();
+    $db->close_connection();
+    return $query_authorization;
+}
+
+function make_authorization($query_authorization,$project_name, $user_id){
+    $db = new class_database();
+    if (isset($query_authorization)){
+        $project_id = $db->mysql->query("SELECT id FROM project WHERE projectname = '$project_name'")->fetch_assoc();
+        $db->mysql->query("DELETE FROM authorization WHERE userid = $user_id AND projectid = '".$project_id['id']."'");
+    }
+    else{
+       $project_id = $db->mysql->query("SELECT id FROM project WHERE projectname = '$project_name'")->fetch_assoc();
+        $db->mysql->query("INSERT INTO authorization (projectid,userid) VALUES ('".$project_id['id']."','$user_id')");
+    }
+    $db->close_connection();
 }

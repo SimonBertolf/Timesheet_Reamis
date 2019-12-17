@@ -19,7 +19,7 @@ google.charts.setOnLoadCallback(drawChart);
 function drawChart() {
     var data = google.visualization.arrayToDataTable([
         [' ','Soll', 'Ist',],
-        ['Soll/Ist','$project_budget','$ist_time']
+        ['Soll/Ist',  soll ,ist]
 ]);
     var options = {
         title: ' ',
@@ -39,4 +39,4 @@ function drawChart() {
     chart.draw(data, google.charts.Bar.convertOptions(options));
 }
 
-//
+

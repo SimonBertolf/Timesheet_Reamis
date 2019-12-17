@@ -45,10 +45,10 @@ if (isset($_GET['Test'])) {
     $project['nr'] = $query_info['projectnr'];
     $ist_time = chart_project($project['projectname']);
     $db->close_connection();
-        ?>
+         ?>
         <script type="text/javascript">
-            var budget = "<? echo $project['budget']; ?>";
-            var ist_time = "<? echo $ist_time; ?>";
+            var soll = <? echo $project['budget']; ?>;
+            var ist = <? echo $ist_time; ?>;
         </script>
 <?php
 }
