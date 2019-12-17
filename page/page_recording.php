@@ -28,17 +28,17 @@ if ($_SESSION['user_typ'] == 'standard' || $_SESSION['user_typ'] == 'controller'
         <!--     Content       -->
         <div>
             <form method="post" class="div_flex_colum">
-                <input class="input_01" id="navigation" type="date" name="date">
-                <input class="input_01" id="navigation" type="time" name="start">
-                <input class="input_01" id="navigation" type="time" name="stop">
-                <select class="input_01" id="navigation" name="projectname">
+                <input class="input_01" id="navigation" type="date" name="date" required>
+                <input class="input_01" id="navigation" type="time" name="start" required>
+                <input class="input_01" id="navigation" type="time" name="stop" required>
+                <select class="input_01" id="navigation" name="projectname" required>
                     <?php
                     while ($res = $query_project->fetch_assoc()) {
                         echo '<option>' . $res['projectname'] . '</option>';
                     }
                     ?>
                 </select>
-                <input class="input_01" id="navigation" type="text" name="description" placeholder="Description">
+                <input class="input_01" id="navigation" type="text" name="description" placeholder="Description" required>
                 <button class="button_01" id="navigation" name="save">save</button>
             </form>
         </div>
