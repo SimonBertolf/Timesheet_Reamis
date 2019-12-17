@@ -1,7 +1,7 @@
 <?php
 require_once '../system/system_aothorization.php';
 require_once '../class/navigation.php';
-if ($_SESSION['user_typ'] == 'controller'){
+if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin') {
     ?>
     <html>
     <head>
@@ -40,7 +40,7 @@ if ($_SESSION['user_typ'] == 'controller'){
                 <div class="div_flex_colum">
                     <p class="font_01">Authentifikation</p>
                     <?php
-                    echo '<p class="font_04">Project:'.$_GET['project_name'].'</p>';
+                    echo '<p class="font_04">Project: '.$_GET['project_name'].'</p>';
                     $project_name = $_SESSION['project_name'] = $_GET['project_name'];
                     if (isset($_GET['project_name'])){
                         while ($res_user = $query_all_user->fetch_assoc()){
@@ -56,7 +56,7 @@ if ($_SESSION['user_typ'] == 'controller'){
                                 $authentifikation = 'Nein';
                             }
                             ?>
-                            <form method="get" class="div_flex_row" action="page_authorization.php?project_name=<?php echo $project_name; ?>">
+                            <form method="get" class="div_flex_row">
                             <p class="font_03"><?php echo $res_user['name']; ?></p>
                             <button class="button_01" id="button_auto" name="ident" value="<?php echo$res_user['id']; ?>"><?php echo $authentifikation; ?></button>
                             </form>

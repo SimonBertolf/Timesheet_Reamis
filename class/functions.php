@@ -24,6 +24,13 @@ function pick_all_user(){
     $db->close_connection();
     return $query_all_user;
 }
+
+function pick_one_user($username){
+    $db = new class_database();
+    $query_one_user = $db->mysql->query("SELECT * FROM user LEFT JOIN time ON time.userid = user.id WHERE user.name = '$username'");
+    $db->close_connection();
+    return $query_one_user;
+}
 function pick_all_project(){
     $db = new class_database();
     $query_all_project = $db->mysql->query("SELECT * FROM project");
@@ -83,6 +90,25 @@ function make_authorization($query_authorization,$project_name, $user_id){
     else{
        $project_id = $db->mysql->query("SELECT id FROM project WHERE projectname = '$project_name'")->fetch_assoc();
         $db->mysql->query("INSERT INTO authorization (projectid,userid) VALUES ('".$project_id['id']."','$user_id')");
+    }
+    $db->close_connection();
+}
+
+function insert_user($username,$password,$name,$quote,$typ,$status){
+    $db = new class_database();
+    $db->mysql->query("INSERT INTO user (username, password, name, quote, typ ,status) VALUES('$username','$password','$name','$quote','$typ','$status')");
+    $db->close_connection();
+}
+
+function set_status($user_name){
+    $db = new class_database();
+    $status_change = $db->mysql->query("SELECT * FROM user WHERE name = '$user_name'")->fetch_assoc();
+    if ($status_change['status'] == 'active'){
+        $db->mysql->query("UPDATE user SET status = 'passive' WHERE name = '$user_name'");
+        echo 111;
+    }
+    else{
+        $db->mysql->query("UPDATE user SET status = 'active' WHERE name = '$user_name'");
     }
     $db->close_connection();
 }

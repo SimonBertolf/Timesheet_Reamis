@@ -16,4 +16,5 @@ if (isset($_GET['ident'])){
     $project_name = $_SESSION['project_name'];
     $query_authorization = authorization($project_name, $user_id);
     make_authorization($query_authorization,$project_name,$user_id);
+    header('Location:page_authorization.php?project_name='.$project_name);
 }

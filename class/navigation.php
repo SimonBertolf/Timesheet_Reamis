@@ -27,8 +27,9 @@ if (isset($_POST['report'])){
 }
 
 //Admin
-
-
+if (isset($_POST['user'])){
+    header('Location: ../page/page_user.php');
+}
 
 function navigation($usertyp){
 // Navigations-Buttons ausgeben
@@ -53,6 +54,7 @@ function navigation($usertyp){
     }
     elseif ($usertyp == 'admin'){
         echo('
+        <button class="button_01" id="navigation" name="user">Add New User</button>
         <button class="button_01" id="navigation" name="record">Time Recording</button>
         <button class="button_01" id="navigation" name="edit">Edit</button>
         <button class="button_01" id="navigation" name="project">Project</button>

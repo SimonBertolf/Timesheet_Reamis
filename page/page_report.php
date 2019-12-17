@@ -7,8 +7,8 @@ if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
 <head>
     <link href="../CSS/timesheet_font.css" rel="stylesheet" type="text/css">
     <link href="../CSS/timesheet_style.css" rel="stylesheet" type="text/css">
-    <script src="../CSS/java.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../CSS/java.js"></script>
     <title>TimeSheet</title>
 </head>
 <body id="start">
