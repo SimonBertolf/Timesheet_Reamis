@@ -27,7 +27,8 @@ if (isset($_POST['archive'])){
 
 //Projekt hinzufügen
 if (isset($_POST['add'])){
-    add_project($_POST['projectname'],$_POST['description'],$_POST['budget']);
+    add_project($_POST['projectname'],$_POST['description'],$_POST['budget'],$_POST['projectnumber']);
+    $error_message = 'Projekt erfolgreich Hinzugefügt.';
 }
 
 //Alle projekte holen

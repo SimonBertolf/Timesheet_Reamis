@@ -1,4 +1,5 @@
 <?php
+
 function time_drawing($userid, $date, $description)
 {
     $db = new class_database();
@@ -56,9 +57,9 @@ function delet_time($id){
     $db->mysql->query("DELETE FROM time WHERE id = $id");
     $db->close_connection();
 }
-function add_project($projectname, $description, $budget){
+function add_project($projectname, $description, $budget,$projectnumber){
     $db = new class_database();
-    $db->mysql->query("INSERT INTO project (projectname, description, budget) VALUE ('$projectname','$description','$budget')");
+    $db->mysql->query("INSERT INTO project (projectname, description, budget, projectnr) VALUE ('$projectname','$description','$budget','$projectnumber')");
     $db->close_connection();
 }
 

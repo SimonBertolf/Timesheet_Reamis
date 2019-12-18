@@ -62,11 +62,13 @@ if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
         <div class="div_slider" id="4">
             <form method="post" class="div_flex_colum">
                 <input class="input_01" id="navigation" type="text" name="projectname" placeholder="Projectname" required>
-                <input class="input_01" id="navigation"  type="text" name="desription" placeholder="description" required>
+                <input class="input_01" id="navigation"  type="text" name="projectnumber" placeholder="projectnumber" required>
+                <input class="input_01" id="navigation"  type="text" name="description" placeholder="description" required>
                 <input class="input_01" id="navigation"  type="number" name="budget" placeholder="Budget" required>
                 <button class="button_01" id="navigation" name="add" >Add</button>
             </form>
         </div>
+        <p class="font_error"> <?php if (isset($_POST['add'])){echo $error_message;} ?></p>
         <div class="div_flex_row">
             <div class="div_left">
                 <form method="get" class="div_flex_colum">

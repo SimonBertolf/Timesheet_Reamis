@@ -7,6 +7,7 @@ session_start();
 //Zeit löschen
 if (isset($_POST['entf'])) {
     delet_time($_POST['timeid']);
+    $error_message = 'Zeit erfolgreich Gelöscht.';
 }
 //Projekt holen
 $query_project = pick_project($_SESSION['user_id']);

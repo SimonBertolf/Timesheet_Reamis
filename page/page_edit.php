@@ -57,6 +57,7 @@ if ($_SESSION['user_typ'] == 'standard' || $_SESSION['user_typ'] == 'controller'
             <form method="post" class="div_flex_colum">
                 <input class="input_01" id="navigation" type="number" name="timeid" placeholder="ID" required>
                 <button class="button_01" id="navigation" name="entf">Delete</button>
+                <p class="font_error"> <?php if (isset($_POST['entf'])){echo $error_message;} ?></p>
             </form>
         </div>
     </div>
