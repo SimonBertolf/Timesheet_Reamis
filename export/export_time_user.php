@@ -23,7 +23,7 @@ if(isset($_POST['exp'])){
     $woche = array('', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag');
     $monat = $monates[$_POST['monat']];
     $name = $_SESSION['user_username'];
-    $jahr = 2019;
+    $jahr = 2020;
     $row = 9;
     $savedata = 'g';
     $savetime = 0;
@@ -84,7 +84,7 @@ if(isset($_POST['exp'])){
     $zFeiertage = 0;
     $rowsKrankheit = AbfrageProjekte($name, $monat,'Krankheit');
     $zKrankheit = 0;
-    $daterange = StartDatum($rows);
+    $daterange = StartDatum($jahr, $monat);
     $userdaten = userdaten($name);
     $soll = ($userdaten['quote']*20);
 #endregion
@@ -208,3 +208,20 @@ if(isset($_POST['exp'])){
 #endregion
 }
 
+
+if (file_exists('Export-'.$_SESSION['user_username'].'-'.$monat.'-'.$jahr.'.Xlsx') && isset($_POST['exp'])) {
+
+    header('Content-Description: File Transfer');
+    header('Content-Type: application/octet-stream');
+    header('Content-Disposition: attachment; filename='.basename('Export-'.$_SESSION['user_username'].'-'.$monat.'-'.$jahr.'.Xlsx'));
+    header('Content-Transfer-Encoding: binary');
+    header('Expires: 0');
+    header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+    header('Pragma: public');
+    header('Content-Length: ' . filesize('Export-'.$_SESSION['user_username'].'-'.$monat.'-'.$jahr.'.Xlsx'));
+
+    ob_clean();
+    flush();
+    readfile('Export-'.$_SESSION['user_username'].'-'.$monat.'-'.$jahr.'.Xlsx');
+    exit;
+}

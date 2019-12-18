@@ -199,7 +199,7 @@ if (isset($_POST['export_monat'])){
         ->setCellValue('J8', 'Total Monat');
 #endregion
 #region/// ----- Save ----- ///
-    $filename = 'Export '.$userdaten['name'].'-'.$monat.'-'.$jahr.'.Xlsx';
+    $filename = 'Export_'.$userdaten['name'].'_'.$monat.'_'.$jahr.'.Xlsx';
     $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
     $writer->setIncludeCharts(true);
     $callStartTime = microtime(true);
@@ -207,3 +207,20 @@ if (isset($_POST['export_monat'])){
 #endregion
 }
 
+
+if (file_exists('Export_'.$userdaten['name'].'_'.$monat.'_'.$jahr.'.Xlsx') && isset($_POST['export_monat'])) {
+
+    header('Content-Description: File Transfer');
+    header('Content-Type: application/octet-stream');
+    header('Content-Disposition: attachment; filename='.basename('Export_'.$userdaten['name'].'_'.$monat.'_'.$jahr.'.Xlsx'));
+    header('Content-Transfer-Encoding: binary');
+    header('Expires: 0');
+    header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+    header('Pragma: public');
+    header('Content-Length: ' . filesize('Export_'.$userdaten['name'].'_'.$monat.'_'.$jahr.'.Xlsx'));
+
+    ob_clean();
+    flush();
+    readfile('Export_'.$userdaten['name'].'_'.$monat.'_'.$jahr.'.Xlsx');
+    exit;
+}
