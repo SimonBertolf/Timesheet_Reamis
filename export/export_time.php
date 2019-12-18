@@ -81,7 +81,6 @@ if (isset($_GET['export_monat'])){
     $z = 0;
     $rowsFerien = AbfrageProjekte($name, $monat,'Ferien');
     $zFerien = 0;
-    var_dump($rowsFerien);
     $rowsFeiertage = AbfrageProjekte($name, $monat,'Feiertage');
     $zFeiertage = 0;
     $rowsKrankheit = AbfrageProjekte($name, $monat,'Krankheit');
