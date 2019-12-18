@@ -84,7 +84,7 @@ if (isset($_POST['export_monat'])){
     $zFeiertage = 0;
     $rowsKrankheit = AbfrageProjekte($name, $monat,'Krankheit');
     $zKrankheit = 0;
-    $daterange = StartDatum($rows);
+    $daterange = StartDatum($jahr, $monat);
     $userdaten = userdaten($name);
     $soll = ($userdaten['quote']*20);
 #endregion
@@ -92,9 +92,7 @@ if (isset($_POST['export_monat'])){
     $spreadsheet = new Spreadsheet();
     $worksheet = $spreadsheet->getActiveSheet();
 #region/// ----- Code Alle ----- ///
-    $startdate = new DateTime($rows[0]['date']);
-    $startdate->modify('first day of this month');
-    $startdate->modify('last sunday');
+
     foreach($daterange  as $date) {
         $spreadsheet->setActiveSheetIndex(0)->setCellValue('A' . $row . '', $woche[$date->format('N')]);
         $spreadsheet->setActiveSheetIndex(0)->setCellValue('C' . $row . '', $date->format('Y-m-d'));

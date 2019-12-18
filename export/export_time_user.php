@@ -46,12 +46,12 @@ if(isset($_POST['exp'])){
         }
         return $rows;
     }
-    function StartDatum($rows)
+    function StartDatum($jahr, $monat)
     {
-        $startdate = new DateTime($rows[0]['date']);
+        $startdate = new DateTime($jahr.'-'.$monat.'-01');
         $startdate->modify('first day of this month');
         $startdate->modify('last monday');
-        $enddate = new DateTime($rows[0]['date']);
+        $enddate = new DateTime($jahr.'-'.$monat.'-01');
         $enddate->modify('last day of this month');
         $enddate->modify('next monday');
         $interval = new DateInterval('P1D');
@@ -91,10 +91,9 @@ if(isset($_POST['exp'])){
 
     $spreadsheet = new Spreadsheet();
     $worksheet = $spreadsheet->getActiveSheet();
+
 #region/// ----- Code Alle ----- ///
-    $startdate = new DateTime($rows[0]['date']);
-    $startdate->modify('first day of this month');
-    $startdate->modify('last sunday');
+
     foreach($daterange  as $date) {
         $spreadsheet->setActiveSheetIndex(0)->setCellValue('A' . $row . '', $woche[$date->format('N')]);
         $spreadsheet->setActiveSheetIndex(0)->setCellValue('C' . $row . '', $date->format('Y-m-d'));
