@@ -1,6 +1,8 @@
 <?php
 require_once '../system/system_report.php';
 require_once '../class/navigation.php';
+require_once '../export/export_time.php';
+
 if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
 ?>
 <html>
@@ -25,10 +27,29 @@ if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
             </form>
         </div>
         <!--     Content       -->
-        <div>
-            <form method="get">
+        <div class="div_flex_row">
+            <form method="get" class="div_left">
                 <button name="project_report">Projekte</button>
-                <button>Monat pro benutzer</button>
+            </form>
+
+            <form method="get" class="div_right">
+                <?php
+                ?>
+                <select name="username">
+                    <?php
+                    while ($res = $all_user->fetch_assoc()){
+                        echo '<option>'.$res['username'].'</option>';
+                    }
+                    ?>
+                </select>
+                <select name="monat">
+                    <?php
+                    foreach ($monates as $item => $d){
+                        echo '<option>'.$item.'</option>';
+                    }
+                    ?>
+                </select>
+                <button name="export_monat">Monat pro benutzer</button>
             </form>
         </div>
     </div>
