@@ -15,15 +15,15 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 #endregion
 
-if (isset($_POST['export_monat'])){
+if(isset($_POST['exp'])){
 
 #region/// ----- Variablen ----- ///
     $monate = array('01' => 'Januar', '02' => 'Februar', '03' => 'März', '04' => 'April', '05' => 'Mai', '06' => 'Juni', '07' => 'Juli', '08' => 'August', '09' => 'September', '10' => 'Oktober', '11' => 'November', '12' => 'Dezember');
     $monates = array('Januar' => '01', 'Februar' => '02', 'März' => '03', 'April' => '04', 'Mai' => '05', 'Juni' => '06', 'Juli' => '07', 'August' => '08', 'September' => '09', 'Oktober' => '10', 'November' => '11', 'Dezember' => '12');
     $woche = array('', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag');
     $monat = $monates[$_POST['monat']];
-    $name = $_POST['username'];
-    $jahr = 2020;
+    $name = $_SESSION['user_username'];
+    $jahr = 2019;
     $row = 9;
     $savedata = 'g';
     $savetime = 0;
@@ -46,12 +46,12 @@ if (isset($_POST['export_monat'])){
         }
         return $rows;
     }
-    function StartDatum($jahr, $monat)
+    function StartDatum($rows)
     {
-        $startdate = new DateTime($jahr.'-'.$monat.'-01');
+        $startdate = new DateTime($rows[0]['date']);
         $startdate->modify('first day of this month');
         $startdate->modify('last monday');
-        $enddate = new DateTime($jahr.'-'.$monat.'-01');
+        $enddate = new DateTime($rows[0]['date']);
         $enddate->modify('last day of this month');
         $enddate->modify('next monday');
         $interval = new DateInterval('P1D');
@@ -142,8 +142,8 @@ if (isset($_POST['export_monat'])){
     $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(11);
     $spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(11);
     $spreadsheet->getActiveSheet()->getColumnDimension('I')->setWidth(11);
-    $spreadsheet->getActiveSheet()->getStyle('A6')->getFont()->setSize(12);
-    $spreadsheet->getActiveSheet()->getStyle('C6')->getFont()->setSize(12);
+    $spreadsheet->getActiveSheet()->getStyle('A6')->getFont()->setSize(11);
+    $spreadsheet->getActiveSheet()->getStyle('C6')->getFont()->setSize(11);
     $spreadsheet->getActiveSheet()->getStyle('J6')->getFont()->setSize(10);
     $spreadsheet->getActiveSheet()->getStyle('H6')->getFont()->setSize(9);
 /// ----- Style Titel ----- ///
@@ -201,7 +201,7 @@ if (isset($_POST['export_monat'])){
         ->setCellValue('J8', 'Total Monat');
 #endregion
 #region/// ----- Save ----- ///
-    $filename = 'Export '.$userdaten['name'].'-'.$monat.'-'.$jahr.'.Xlsx';
+    $filename = 'Export-'.$_SESSION['user_username'].'-'.$monat.'-'.$jahr.'.Xlsx';
     $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
     $writer->setIncludeCharts(true);
     $callStartTime = microtime(true);

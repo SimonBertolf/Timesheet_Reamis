@@ -1,6 +1,7 @@
 <?php
 require_once '../system/system_mainpage.php';
 require_once '../class/navigation.php';
+session_start();
 if (isset($_SESSION['user_typ'])) {
 ?>
 <html>
@@ -28,11 +29,21 @@ if (isset($_SESSION['user_typ'])) {
         <!--     Content       -->
         <div class="div_flex_row">
             <div class="div_left">
-                <?php
-                echo '<p class="font_01">Wilkommen '.$_SESSION['user_name'].'</p>';
-                echo '<p class="font_03">Dein username ist: '.$_SESSION['user_username'].'</p>';
-                echo '<p class="font_03">Dein Tagessoll beträgt '.$_SESSION['user_quote'].'</p>';
-                ?>
+                <form method="post" class="div_flex_colum">
+                    <?php
+                    echo '<p class="font_01" id="center">Wilkommen '.$_SESSION['user_name'].'</p>';
+                    echo '<p class="font_03" id="center">Dein username ist: '.$_SESSION['user_username'].'</p>';
+                    echo '<p class="font_03" id="center">Dein Tagessoll beträgt '.$_SESSION['user_quote'].'</p>';
+                    ?>
+                    <select name="monat" class="button_01" id="button_project">
+                        <?php
+                        foreach ($monates as $item => $d){
+                            echo '<option>'.$item.'</option>';
+                        }
+                        ?>
+                    </select>
+                    <button class="button_01" id="button_project" name="exp">Export</button>
+                </form>
             </div>
             <div class="div_right">
 

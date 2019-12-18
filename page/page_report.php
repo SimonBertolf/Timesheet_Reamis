@@ -32,24 +32,26 @@ if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
                 <button name="project_report">Projekte</button>
             </form>
 
-            <form method="get" class="div_right">
+            <form method="post" class="div_right">
                 <?php
                 ?>
-                <select name="username">
+                <p class="font_01" id="center">Monatsübersicht</p>
+                <p class="font_03" id="center">Die Stundenübersicht über 1 Monat</p>
+                <select name="username" class="button_01" id="button_project" >
                     <?php
                     while ($res = $all_user->fetch_assoc()){
                         echo '<option>'.$res['username'].'</option>';
                     }
                     ?>
                 </select>
-                <select name="monat">
+                <select name="monat" class="button_01" id="button_project">
                     <?php
                     foreach ($monates as $item => $d){
                         echo '<option>'.$item.'</option>';
                     }
                     ?>
                 </select>
-                <button name="export_monat">Monat pro benutzer</button>
+                <button name="export_monat" class="button_01" id="button_project">Export</button>
             </form>
         </div>
     </div>
