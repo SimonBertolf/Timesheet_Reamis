@@ -1,5 +1,6 @@
 <?php
 require_once '../system/system_edit.php';
+require_once '../system/system_recording.php';
 require_once '../class/navigation.php';
 if ($_SESSION['user_typ'] == 'standard' || $_SESSION['user_typ'] == 'controller'|| $_SESSION['user_typ'] == 'admin'){
 ?>
@@ -26,6 +27,25 @@ if ($_SESSION['user_typ'] == 'standard' || $_SESSION['user_typ'] == 'controller'
             </form>
         </div>
         <!--     Content       -->
+        <div class="button_03_slider" id='3' >Time Recording</div>
+        <div class="div_slider" id="4">
+            <form method="post" class="div_flex_colum">
+                <input class="input_01" id="navigation" type="date" name="date" required>
+                <input class="input_01" id="navigation" type="time" name="start" required>
+                <input class="input_01" id="navigation" type="time" name="stop" required>
+                <select class="input_01" id="navigation" name="projectname" required>
+                    <?php
+                    while ($res = $query_project->fetch_assoc()) {
+                        echo '<option>' . $res['projectname'] . '</option>';
+                    }
+                    ?>
+                </select>
+                <input class="input_01" id="navigation" type="text" name="description" placeholder="Description" required>
+                <button class="button_01" id="navigation" name="save">save</button>
+                <p class="font_error"> <?php if (isset($_POST['save'])){echo $error_message;} ?></p>
+            </form>
+        </div>
+        <p class="font_error"> <?php if (isset($_POST['add'])){echo $error_message;} ?></p>
         <div>
             <form method="get" class="div_flex_colum">
                 <select class="input_01" id="navigation" name="projectname">

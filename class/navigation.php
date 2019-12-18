@@ -8,9 +8,6 @@ if (isset($_POST['logout'])){
 if (isset($_POST['main'])){
     header('Location: ../page/page_mainpage.php');
 }
-if (isset($_POST['record'])){
-    header('Location: ../page/page_recording.php');
-}
 if (isset($_POST['edit'])){
     header('Location: ../page/page_edit.php');
 }
@@ -35,16 +32,14 @@ function navigation($usertyp){
 // Navigations-Buttons ausgeben
     if ($usertyp == 'standard'){
         echo('
-        <button class="button_01" id="navigation" name="record">Time Recording</button>
-        <button class="button_01" id="navigation" name="edit">Edit</button>
+        <button class="button_01" id="navigation" name="edit">Time Edit</button>
         <button class="button_01" id="navigation" name="main">Mainpage</button>
         <button class="button_01" id="navigation" name="logout">Logout</button>
         ');
     }
     elseif ($usertyp == 'controller'){
         echo('
-        <button class="button_01" id="navigation" name="record">Time Recording</button>
-        <button class="button_01" id="navigation" name="edit">Edit</button>
+        <button class="button_01" id="navigation" name="edit">Time Edit</button>
         <button class="button_01" id="navigation" name="project">Project</button>
         <button class="button_01" id="navigation" name="auto">Authorization</button>
         <button class="button_01" id="navigation" name="report">Report</button>
@@ -55,8 +50,7 @@ function navigation($usertyp){
     elseif ($usertyp == 'admin'){
         echo('
         <button class="button_01" id="navigation" name="user">Add New User</button>
-        <button class="button_01" id="navigation" name="record">Time Recording</button>
-        <button class="button_01" id="navigation" name="edit">Edit</button>
+        <button class="button_01" id="navigation" name="edit">Time Edit</button>
         <button class="button_01" id="navigation" name="project">Project</button>
         <button class="button_01" id="navigation" name="auto">Authorization</button>
         <button class="button_01" id="navigation" name="report">Report</button>
