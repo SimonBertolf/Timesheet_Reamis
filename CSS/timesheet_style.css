@@ -197,7 +197,9 @@ th, td {
 /*Images Ende*/
 
 /*IDs*/
-
+#buton_left{
+    left: 10px;
+}
 /*IDs Ende*/
 
 

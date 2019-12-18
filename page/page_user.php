@@ -52,18 +52,23 @@ if ($_SESSION['user_typ'] == 'admin'){
                 }
                 ?>
                 </form>
-            <div class="div_right" id="left">
+                 <form method="post" class="div_right">
+                    <div>
                 <?php
                 echo '<p class="font_01">'.$user_name.'</p>';
                 echo '<p class="font_03">Username: '.$user_username.'</p>';
                 echo '<p class="font_03">Daily Qupte: '.$user_quote.'</p>';
                 echo '<p class="font_03">Usertyp: '.$user_typ.'</p>';
                 echo '<p class="font_03">Userstatus: '.$user_status.'</p>';
-
-                echo '<form method="post" class="div_flex_colum"><button class="button_01" id="button_project" name="status">Status</button>';
-                echo '<button class="button_01" id="button_project" name="delete">Delete</button></form>';
                 ?>
-            </div>
+                 </div>
+                 <div>
+                    <button class="button_01" id="button_project"  name="status">Status</button>
+                </div>
+                <div>
+                    <button class="button_01" id="button_project" name="delete">Delete</button>
+                </div>
+                </form>
         </div>
     </body>
 

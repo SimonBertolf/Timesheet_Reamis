@@ -42,7 +42,6 @@ if ($_SESSION['user_typ'] == 'standard' || $_SESSION['user_typ'] == 'controller'
                 </select>
                 <input class="input_01" id="navigation" type="text" name="description" placeholder="Description" required>
                 <button class="button_01" id="navigation" name="save">save</button>
-                <p class="font_error"> <?php if (isset($_POST['save'])){echo $error_message;} ?></p>
             </form>
         </div>
         <p class="font_error"> <?php if (isset($_POST['add'])){echo $error_message;} ?></p>

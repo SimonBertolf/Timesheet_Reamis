@@ -35,8 +35,9 @@ if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
             <form method="post" class="div_right">
                 <?php
                 ?>
-                <p class="font_01" id="center">Monatsübersicht</p>
-                <p class="font_03" id="center">Die Stundenübersicht über 1 Monat</p>
+                <p class="font_01">Monatsübersicht</p>
+                <p class="font_03">Die Stundenübersicht über 1 Monat</p>
+                <div>
                 <select name="username" class="button_01" id="button_project" >
                     <?php
                     while ($res = $all_user->fetch_assoc()){
@@ -44,6 +45,8 @@ if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
                     }
                     ?>
                 </select>
+                </div>
+                <div>
                 <select name="monat" class="button_01" id="button_project">
                     <?php
                     foreach ($monates as $item => $d){
@@ -51,7 +54,10 @@ if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
                     }
                     ?>
                 </select>
+                </div>
+                 <div>
                 <button name="export_monat" class="button_01" id="button_project">Export</button>
+                </div>
             </form>
         </div>
     </div>

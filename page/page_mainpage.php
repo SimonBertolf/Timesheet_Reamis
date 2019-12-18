@@ -27,27 +27,23 @@ if (isset($_SESSION['user_typ'])) {
             </form>
         </div>
         <!--     Content       -->
-        <div class="div_flex_row">
-            <div class="div_left">
-                <form method="post" class="div_flex_colum">
+        <div class="div_flex_colum">
+            <form method="post" class="div_flex_colum">
+                <?php
+                echo '<p class="font_01" id="center">Wilkommen '.$_SESSION['user_name'].'</p>';
+                echo '<p class="font_03" id="center">Dein Username ist: '.$_SESSION['user_username'].'</p>';
+                echo '<p class="font_03" id="center">Dein Tagessoll beträgt '.$_SESSION['user_quote'].'</p>';
+                ?>
+                <p class="font_03" id="center">Monatsraport Exportieren</p>
+                <select name="monat" class="button_01" id="navigation">
                     <?php
-                    echo '<p class="font_01" id="center">Wilkommen '.$_SESSION['user_name'].'</p>';
-                    echo '<p class="font_03" id="center">Dein username ist: '.$_SESSION['user_username'].'</p>';
-                    echo '<p class="font_03" id="center">Dein Tagessoll beträgt '.$_SESSION['user_quote'].'</p>';
+                    foreach ($monates as $item => $d){
+                        echo '<option>'.$item.'</option>';
+                    }
                     ?>
-                    <select name="monat" class="button_01" id="button_project">
-                        <?php
-                        foreach ($monates as $item => $d){
-                            echo '<option>'.$item.'</option>';
-                        }
-                        ?>
-                    </select>
-                    <button class="button_01" id="button_project" name="exp">Export</button>
-                </form>
-            </div>
-            <div class="div_right">
-
-            </div>
+                </select>
+                <button class="button_01" id="navigation" name="exp">Export</button>
+            </form>
         </div>
     </div>
 </body>
