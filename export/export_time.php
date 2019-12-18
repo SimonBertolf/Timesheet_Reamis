@@ -23,7 +23,7 @@ if (isset($_POST['export_monat'])){
     $woche = array('', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag');
     $monat = $monates[$_POST['monat']];
     $name = $_POST['username'];
-    $jahr = 2020;
+    $jahr = 2019;
     $row = 9;
     $savedata = 'g';
     $savetime = 0;
