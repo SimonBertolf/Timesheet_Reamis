@@ -50,8 +50,8 @@ if ($_SESSION['user_typ'] == 'standard' || $_SESSION['user_typ'] == 'controller'
             <form method="get" class="div_flex_colum">
                 <select class="input_01" id="navigation" name="projectname">
                     <?php
-                    while ($res = $query_project->fetch_assoc()){
-                        echo'<option>'.$res['projectname'].'</option>';
+                    while ($res = $query_project1->fetch_assoc()) {
+                        echo '<option>' . $res['projectname'] . '</option>';
                     }
                     ?>
                 </select>
