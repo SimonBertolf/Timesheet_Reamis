@@ -1,5 +1,4 @@
 // Menue
-src="../CSS/PHP_JS.php"
 
 $(document).ready(function(){
     $("#1").click(function(){
@@ -11,6 +10,13 @@ $(document).ready(function(){
 $(document).ready(function(){
     $("#3").click(function(){
         $("#4").slideToggle("fast");
+    });
+});
+
+// New Project
+$(document).ready(function(){
+    $("#5").click(function(){
+        $("#6").slideToggle("fast");
     });
 });
 

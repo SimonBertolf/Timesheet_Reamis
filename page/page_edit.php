@@ -43,6 +43,9 @@ if ($_SESSION['user_typ'] == 'standard' || $_SESSION['user_typ'] == 'controller'
                 <input class="input_01" id="navigation" type="text" name="description" placeholder="Description" required>
                 <button class="button_01" id="navigation" name="save">save</button>
             </form>
+        </div>
+        <div class="button_03_slider" id='5' >Full Days</div>
+        <div class="div_slider" id="6">
             <form method="post">
                 <input class="input_01" id="navigation" type="date" name="date_full" required>
                 <button class="button_01" id="navigation" name="ferientag">Ferientag</button>
@@ -50,7 +53,6 @@ if ($_SESSION['user_typ'] == 'standard' || $_SESSION['user_typ'] == 'controller'
                 <button class="button_01" id="navigation" name="krank">Krank</button>
             </form>
         </div>
-        <p class="font_error"> <?php if (isset($_POST['add'])){echo $error_message;} ?></p>
         <div>
             <form method="get" class="div_flex_colum">
                 <select class="input_01" id="navigation" name="projectname">
