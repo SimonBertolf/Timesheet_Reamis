@@ -43,6 +43,12 @@ if ($_SESSION['user_typ'] == 'standard' || $_SESSION['user_typ'] == 'controller'
                 <input class="input_01" id="navigation" type="text" name="description" placeholder="Description" required>
                 <button class="button_01" id="navigation" name="save">save</button>
             </form>
+            <form method="post">
+                <input class="input_01" id="navigation" type="date" name="date_full" required>
+                <button class="button_01" id="navigation" name="ferientag">Ferientag</button>
+                <button class="button_01" id="navigation" name="feiertag">Feiertag</button>
+                <button class="button_01" id="navigation" name="krank">Krank</button>
+            </form>
         </div>
         <p class="font_error"> <?php if (isset($_POST['add'])){echo $error_message;} ?></p>
         <div>

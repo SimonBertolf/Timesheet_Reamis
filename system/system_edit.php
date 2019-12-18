@@ -17,3 +17,14 @@ $query_project1 = pick_project($_SESSION['user_id']);
 $query_time = pick_time($_GET['projectname']);
 
 
+if(isset($_POST['ferientag'])){
+    ferien($_SESSION['user_id'], $_POST['date_full'], $_SESSION['user_quote'] );
+}
+
+if(isset($_POST['feiertag'])){
+    feiertag($_SESSION['user_id'], $_POST['date_full'], $_SESSION['user_quote'] );
+}
+
+if(isset($_POST['krank'])){
+    krank($_SESSION['user_id'], $_POST['date_full'], $_SESSION['user_quote'] );
+}

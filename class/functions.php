@@ -120,3 +120,23 @@ function report_time($projectid,$userid){
     $db->close_connection();
     return $query_report_time;
 }
+
+function ferien($userid,$date,$time){
+    $db = new class_database();
+    $db->mysql->query("INSERT INTO time (projectid, userid, date, time, task, start, stop) VALUE (1 , $userid, '$date', '$time', 'Ferien', '08:00', '17:00')");
+    $db->close_connection();
+}
+
+
+function feiertag($userid,$date,$time){
+    $db = new class_database();
+    $db->mysql->query("INSERT INTO time (projectid, userid, date, time, task, start, stop) VALUE (1 , $userid, '$date', '$time', 'Feiertage', '08:00', '17:00')");
+    $db->close_connection();
+}
+
+
+function krank($userid,$date,$time){
+    $db = new class_database();
+    $db->mysql->query("INSERT INTO time (projectid, userid, date, time, task, start, stop) VALUE (1 , $userid, '$date', '$time', 'Krankheit', '08:00', '17:00')");
+    $db->close_connection();
+}
