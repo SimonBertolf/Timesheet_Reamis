@@ -9,6 +9,6 @@ $query_project = pick_project($_SESSION['user_id']);
 
 /// Einschreiben
 if (isset($_POST['save'])) {
-    time_drawing($_SESSION['user_id'], $_POST['date'], $_POST['description']);
+    time_drawing($_SESSION['user_id'], $_POST['date'], $_POST['description'],$_POST['projectname']);
     $error_message = 'Zeit erfolgreich Gespeichert.';
 }

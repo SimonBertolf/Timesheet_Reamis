@@ -14,7 +14,7 @@ if (isset($_POST['entf'])) {
 $query_project1 = pick_project($_SESSION['user_id']);
 
 //Zeit holen
-$query_time = pick_time($_GET['projectname']);
+$query_time = pick_time($_GET['projectname'],$_SESSION['user_id']);
 
 
 if(isset($_POST['ferientag'])){

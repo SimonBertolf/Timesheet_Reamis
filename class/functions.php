@@ -1,10 +1,10 @@
 <?php
 
-function time_drawing($userid, $date, $description)
+function time_drawing($userid, $date, $description,$projectname)
 {
     $db = new class_database();
     $t = new class_time();
-    $project = $db->mysql->query("SELECT * FROM project WHERE projectname = '" . $_POST['projectname'] . "'")->fetch_assoc();
+    $project = $db->mysql->query("SELECT * FROM project WHERE projectname = '$projectname'")->fetch_assoc();
     $projectid = $project['id'];
     $start = $_POST['start'];
     $stop = $_POST['stop'];
@@ -45,9 +45,9 @@ function pick_one_project($projectname){
     return $query_one_project;
 }
 
-function pick_time($projectname){
+function pick_time($projectname,$userid){
     $db = new class_database();
-    $query_time = $db->mysql->query("SELECT time.id, time.time, task, time.date FROM time LEFT JOIN project ON project.id = time.projectid WHERE projectname = '$projectname'");
+    $query_time = $db->mysql->query("SELECT time.id, time.time, task, time.date FROM time LEFT JOIN project ON project.id = time.projectid WHERE projectname = '$projectname' and userid = '$userid'");
     $db->close_connection();
     return $query_time;
 }

@@ -41,7 +41,7 @@ if ($_SESSION['user_typ'] == 'standard' || $_SESSION['user_typ'] == 'controller'
                     ?>
                 </select>
                 <input class="input_01" id="navigation" type="text" name="description" placeholder="Description" required>
-                <button class="button_01" id="navigation" name="Save">save</button>
+                <button class="button_01" id="navigation" name="save">Save</button>
             </form>
         </div>
         <div class="button_03_slider" id='5' >Full Days</div>
