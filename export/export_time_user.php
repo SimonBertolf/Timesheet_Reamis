@@ -179,7 +179,7 @@ if(isset($_POST['exp'])){
 //        ->setCellValue('C6',  $monat)
         ->setCellValue('E6', 'Dokumentationsperiode')
         ->setCellValue('H6', $monate[$monat].' '.$jahr)
-        ->setCellValue('E5', 'Arbeitspensum pro Woche')
+        ->setCellValue('E5', 'Arbeitspensum pro Tag')
         ->setCellValue('H5', $userdaten['quote'])
         ->setCellValue('A'.$row.'', 'Soll')
         ->setCellValue('B'.$row.'', $soll)

@@ -125,9 +125,12 @@ if (isset($_POST['export_monat'])){
         if ($date->format('N') == 7) {
             $row++;
             $summrow = $row;
-            $spreadsheet->getActiveSheet()->getStyle('A' . $row . ':J' . $row . '')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+            $spreadsheet->getActiveSheet()->getStyle('A' . $row . ':I' . $row . '')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
             $spreadsheet->getActiveSheet()->getStyle('A' . $row . ':I' . $row . '')->getFont()->setSize(13);
             $spreadsheet->setActiveSheetIndex(0)->setCellValue('I' . $row . '', '=sum(H' . ($summrow -= 1) . ':H' . ($summrow -= 6) . ')');
+        }
+        if ($date->format('N') == 1) {
+            $spreadsheet->setActiveSheetIndex(0)->setCellValue('B' . $row . '', $date->format('W'));
         }
         $savedata = 'h';
         $savetime = 'h';
@@ -138,36 +141,42 @@ if (isset($_POST['export_monat'])){
 /// ----- Styles Default----- ///
     $spreadsheet->getDefaultStyle()->getFont()->setName('Arial')->setSize(12);
     $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(11);
+    $spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(6);
+    $spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth(8);
+    $spreadsheet->getActiveSheet()->getColumnDimension('F')->setWidth(8);
+    $spreadsheet->getActiveSheet()->getColumnDimension('G')->setWidth(8);
     $spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(11);
     $spreadsheet->getActiveSheet()->getColumnDimension('I')->setWidth(11);
     $spreadsheet->getActiveSheet()->getStyle('A6')->getFont()->setSize(12);
     $spreadsheet->getActiveSheet()->getStyle('C6')->getFont()->setSize(12);
     $spreadsheet->getActiveSheet()->getStyle('J6')->getFont()->setSize(10);
-    $spreadsheet->getActiveSheet()->getStyle('H6')->getFont()->setSize(9);
+//    $spreadsheet->getActiveSheet()->getStyle('H6')->getFont()->setSize(9);
+    $spreadsheet->getActiveSheet()->getStyle('A6:J6')->getFont()->setSize(9);
+    $spreadsheet->getActiveSheet()->getStyle('D5:J5')->getFont()->setSize(9);
 /// ----- Style Titel ----- ///
     $spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->setSize(22);
     $spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->getColor()->setARGB('a3182e');
 /// ----- Style Border ----- ///
-    $spreadsheet->getActiveSheet()->getStyle('A1:J1')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
-    $spreadsheet->getActiveSheet()->getStyle('A4:J4')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
-    $spreadsheet->getActiveSheet()->getStyle('A5:J5')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
-    $spreadsheet->getActiveSheet()->getStyle('A6:J6')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
-    $spreadsheet->getActiveSheet()->getStyle('A8:J'.$row.'')->getBorders()->getVertical()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
-    $spreadsheet->getActiveSheet()->getStyle('A8:J'.$row.'')->getBorders()->getVertical()->getColor()->setARGB('FFFFFF');  // Weiss
-    $spreadsheet->getActiveSheet()->getStyle('A8:J8')->getFont()->getColor()->setARGB('FFFFFF');    // Weiss
+    $spreadsheet->getActiveSheet()->getStyle('A1:I1')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM);
+    $spreadsheet->getActiveSheet()->getStyle('A4:I4')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+    $spreadsheet->getActiveSheet()->getStyle('A5:I5')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+    $spreadsheet->getActiveSheet()->getStyle('A6:I6')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+    $spreadsheet->getActiveSheet()->getStyle('A8:I'.$row.'')->getBorders()->getVertical()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+    $spreadsheet->getActiveSheet()->getStyle('A8:I'.$row.'')->getBorders()->getVertical()->getColor()->setARGB('FFFFFF');  // Weiss
+    $spreadsheet->getActiveSheet()->getStyle('A8:I8')->getFont()->getColor()->setARGB('FFFFFF');    // Weiss
 /// ----- Style BG Color----- ///
-    $spreadsheet->getActiveSheet()->getStyle('A8:J8')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('615351'); // Braun hell
+    $spreadsheet->getActiveSheet()->getStyle('A8:I8')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('615351'); // Braun hell
     $a = 9;
     for ($a = 9; $a < $row; $a ++){
         if($a % 2 !== 0){
-            $spreadsheet->getActiveSheet()->getStyle('A'.$a.':J'.$a.'')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('E5F0FC'); // Hell
+            $spreadsheet->getActiveSheet()->getStyle('A'.$a.':I'.$a.'')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('E5F0FC'); // Hell
         }
         else{
-            $spreadsheet->getActiveSheet()->getStyle('A'.$a.':J'.$a.'')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('AED2FB'); // Dunkel
+            $spreadsheet->getActiveSheet()->getStyle('A'.$a.':I'.$a.'')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('AED2FB'); // Dunkel
         }
     }
-    $spreadsheet->getActiveSheet()->getStyle('A'.$row.':J'.$row.'')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('615351'); // Braun hell
-    $spreadsheet->getActiveSheet()->getStyle('A'.$row.':J'.$row.'')->getFont()->getColor()->setARGB('FFFFFF');    // Weiss
+    $spreadsheet->getActiveSheet()->getStyle('A'.$row.':I'.$row.'')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('615351'); // Braun hell
+    $spreadsheet->getActiveSheet()->getStyle('A'.$row.':I'.$row.'')->getFont()->getColor()->setARGB('FFFFFF');    // Weiss
 /// ----- Text ----- ///
     $spreadsheet->setActiveSheetIndex(0)  /// Kopfzeile
     ->setCellValue('A1', 'REAM AG / reamis ag')
@@ -176,16 +185,26 @@ if (isset($_POST['export_monat'])){
         ->setCellValue('C5', $userdaten['name'])
 //        ->setCellValue('A6', 'Monat:')
 //        ->setCellValue('C6',  $monat)
-        ->setCellValue('E6', 'Dokumentationsperiode')
-        ->setCellValue('H6', $monate[$monat].' '.$jahr)
-        ->setCellValue('E5', 'Arbeitspensum pro Woche')
-        ->setCellValue('H5', $userdaten['quote'])
-        ->setCellValue('A'.$row.'', 'Soll')
-        ->setCellValue('B'.$row.'', $soll)
-        ->setCellValue('E'.$row.'', 'Stunden')
-        ->setCellValue('F'.$row.'', '=(J'.$row.'-B'.$row.')')           //überstunden
-        ->setCellValue('J'.$row.'', '=sum(I8:I'.$row.')')
-        ->setCellValue('I'.$row.'', 'Total Monat');
+//        ->setCellValue('E6', 'Dokumentationsperiode')
+//        ->setCellValue('H6', $monate[$monat].' '.$jahr)
+        ->setCellValue('G6', 'Dokumentationsperiode')
+        ->setCellValue('I6', $monate[$monat].' '.$jahr)
+//        ->setCellValue('E5', 'Arbeitspensum pro Tag')
+//        ->setCellValue('H5', $userdaten['quote'])
+        ->setCellValue('G5', 'Arbeitspensum pro Tag')
+        ->setCellValue('I5', $userdaten['quote'])
+//        ->setCellValue('A'.$row.'', 'Soll')
+//        ->setCellValue('B'.$row.'', $soll)
+        ->setCellValue('A6', 'Soll')
+        ->setCellValue('B6', $soll)
+//        ->setCellValue('E'.$row.'', 'Stunden')
+//        ->setCellValue('F'.$row.'', '=(J'.$row.'-B'.$row.')')           //überstunden
+        ->setCellValue('C6', 'Stunden')
+        ->setCellValue('D6', '=(F6-B6)')           //überstunden
+//        ->setCellValue('J'.$row.'', '=sum(I8:I'.$row.')')
+//        ->setCellValue('I'.$row.'', 'Total Monat');        //überstunden
+    ->setCellValue('F6', '=sum(I8:I'.$row.')')
+        ->setCellValue('E6', 'Total Monat');
     $spreadsheet->setActiveSheetIndex(0)  /// Tabellonkopf
     ->setCellValue('A8', 'Tag')
         ->setCellValue('B8', 'Woche')
@@ -195,8 +214,8 @@ if (isset($_POST['export_monat'])){
         ->setCellValue('F8', 'Krank')
         ->setCellValue('G8', 'Ferien')
         ->setCellValue('H8', 'Total Tag')
-        ->setCellValue('I8', 'Total Woche')
-        ->setCellValue('J8', 'Total Monat');
+        ->setCellValue('I8', 'Total Woche');
+//        ->setCellValue('J8', 'Total Monat');
 #endregion
 #region/// ----- Save ----- ///
     $filename = 'Export_'.$userdaten['name'].'_'.$monat.'_'.$jahr.'.Xlsx';
