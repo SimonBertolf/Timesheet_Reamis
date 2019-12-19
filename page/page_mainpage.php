@@ -26,6 +26,24 @@ if (isset($_SESSION['user_typ'])) {
                 ?>
             </form>
         </div>
+
+        <div class="button_03_slider" id='3' >Time Recording</div>
+        <div class="div_slider" id="4">
+            <form method="post" class="div_flex_colum">
+                <input class="input_01" id="navigation" type="time" name="start" required>
+                <input class="input_01" id="navigation" type="time" name="stop" required>
+                <select class="input_01" id="navigation" name="projectname" required>
+                    <?php
+                    while ($res = $query_project->fetch_assoc()) {
+                        echo '<option>' . $res['projectname'] . '</option>';
+                    }
+                    ?>
+                </select>
+                <input class="input_01" id="navigation" type="text" name="description" placeholder="Description" required>
+                <button class="button_01" id="navigation" name="save">Save</button>
+            </form>
+        </div>
+
         <!--     Content       -->
         <div class="div_flex_colum">
             <form method="post" class="div_flex_colum">

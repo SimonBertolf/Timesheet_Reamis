@@ -175,3 +175,18 @@ function differenz($soll,$ist){
     }
 return $stunden;
 }
+
+
+
+function today_time_drawing($userid, $date, $description,$projectname)
+{
+    $db = new class_database();
+    $t = new class_time();
+    $project = $db->mysql->query("SELECT * FROM project WHERE projectname = '$projectname'")->fetch_assoc();
+    $projectid = $project['id'];
+    $start = $_POST['start'];
+    $stop = $_POST['stop'];
+    $time = $t->work_time($start, $stop);
+    $db->mysql->query("INSERT INTO time (projectid, userid, date, time, task, start, stop) VALUE ( $projectid , $userid, '$date', '$time', '$description', '$start', '$stop')");
+    $db->close_connection();
+}
