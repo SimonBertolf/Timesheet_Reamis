@@ -51,7 +51,16 @@ function pick_time($projectname){
     $db->close_connection();
     return $query_time;
 }
-
+function pick_time_user($projectid,$userid){
+    $total_time = 0;
+    $db = new class_database();
+    $query_project_chart = $db->mysql->query("SELECT * from time WHERE projectid = '$projectid' AND userid = '$userid' ");
+    $db->close_connection();
+    while ($res = $query_project_chart->fetch_assoc()){
+        $total_time += $res['time'];
+    }
+    return $total_time;
+}
 function delet_time($id){
     $db = new class_database();
     $db->mysql->query("DELETE FROM time WHERE id = $id");
@@ -139,4 +148,30 @@ function krank($userid,$date,$time){
     $db = new class_database();
     $db->mysql->query("INSERT INTO time (projectid, userid, date, time, task, start, stop) VALUE (1 , $userid, '$date', '$time', 'Krankheit', '08:00', '17:00')");
     $db->close_connection();
+}
+
+function char_data($projectname,$username){
+    $db = new class_database();
+    $query_char_data = $db->mysql->query("SELECT * FROM time 
+                                            LEFT JOIN project ON time.projectid = project.id 
+                                            LEFT JOIN user ON time.userid = user.id
+                                            WHERE project.projectname = '$projectname' AND user.name = '$username' ORDER BY user.name");
+    $db->close_connection();
+    return $query_char_data;
+
+}
+
+function differenz($soll,$ist){
+    $dif = ($soll-$ist);
+
+    if ($dif > 0){
+        $stunden = $dif.' Stunden verfügbar';
+    }elseif ($dif == 0){
+
+        $stunden = 'eben aus';
+    }elseif ($dif < 0){
+
+        $stunden =($dif*-1).' Stunden zuviel';
+    }
+return $stunden;
 }
