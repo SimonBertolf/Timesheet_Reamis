@@ -111,17 +111,20 @@ if(isset($_POST['exp'])){
             $spreadsheet->setActiveSheetIndex(0)->setCellValue('G' . $row . '', $savetimeFerien);
             $zFerien++;
         }
+        $savetimeFerien = 0;
         while ($date->format('Y-m-d') == $rowsFeiertage[$zFeiertage]['date']) {
             $total =($rowsFeiertage[$zFeiertage]['time']);
             $savetimeFeiertage += $total;
             $spreadsheet->setActiveSheetIndex(0)->setCellValue('G' . $row . '', $savetimeFeiertage);
             $zFeiertage++;
         }
+        $savetimeFeiertage = 0;
         while ($date->format('Y-m-d') == $rowsKrankheit[$zKrankheit]['date']) {
             $total =($rowsKrankheit[$zKrankheit]['time']);
             $savetimeKrankheit += $total;
             $spreadsheet->setActiveSheetIndex(0)->setCellValue('G' . $row . '', $savetimeKrankheit);
             $zKrankheit++;
+            $savetimeKrankheit = 0;
         }
         if ($date->format('N') == 7) {
             $row++;
