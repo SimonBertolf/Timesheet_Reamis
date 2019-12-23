@@ -105,6 +105,7 @@ if(isset($_POST['exp'])){
             $spreadsheet->setActiveSheetIndex(0)->setCellValue('D' . $row . '', $savetime);
             $z++;
         }
+        $savetime = 0;
         while ($date->format('Y-m-d') == $rowsFerien[$zFerien]['date']) {
             $total =($rowsFerien[$zFerien]['time']);
             $savetimeFerien += $total;
