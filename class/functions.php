@@ -47,7 +47,7 @@ function pick_one_project($projectname){
 
 function pick_time($projectname,$userid){
     $db = new class_database();
-    $query_time = $db->mysql->query("SELECT time.id, time.time, task, time.date FROM time LEFT JOIN project ON project.id = time.projectid WHERE projectname = '$projectname' and userid = '$userid'");
+    $query_time = $db->mysql->query("SELECT time.id, time.time, task, time.date FROM time LEFT JOIN project ON project.id = time.projectid WHERE projectname = '$projectname' and userid = '$userid' ORDER BY date DESC");
     $db->close_connection();
     return $query_time;
 }

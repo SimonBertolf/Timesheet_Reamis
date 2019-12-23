@@ -9,6 +9,9 @@ if (isset($_POST['entf'])) {
     delet_time($_POST['timeid']);
     $error_message = 'Zeit erfolgreich Gelöscht.';
 }
+if(isset($_POST['delete'])){
+    delet_time($_POST['delete']);
+}
 
 /// projekte abfragen
 $query_project1 = pick_project($_SESSION['user_id']);

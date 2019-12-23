@@ -63,7 +63,7 @@ th, td {
     background-color: #D0D0D0;
 }
 .div_table{
-    height: 170px;
+    height: 300px;
     width: 200px;
     align-self: center;
     text-align: center;
@@ -147,7 +147,13 @@ th, td {
      font-weight: bold;
      color: #383838;
  }
-
+.button_delete{
+    background-color: unset;
+    border: unset;
+     color: #FF0000;
+    font-weight: bold;
+    font-size: 15px;
+}
 #login{
     background-color: #8D8D8D;
     border-radius: 8px;
@@ -156,6 +162,13 @@ th, td {
     font-weight: bold;
 }
 #navigation{
+    background-color: #8D8D8D;
+    border-radius: 8px;
+    border: unset;
+    font-weight: bold;
+    color: #383838;
+}
+#navigation_J{
     background-color: #8D8D8D;
     border-radius: 8px;
     border: unset;

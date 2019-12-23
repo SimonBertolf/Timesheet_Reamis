@@ -55,37 +55,33 @@ if ($_SESSION['user_typ'] == 'standard' || $_SESSION['user_typ'] == 'controller'
         </div>
         <div>
             <form method="get" class="div_flex_colum">
-                <select class="input_01" id="navigation" name="projectname">
+                <select class="input_01" id="navigation_J" name="projectname" onchange="this.form.submit();">
                     <?php
+                    echo '<option>'.$_GET['projectname'].'</option>';
+
                     while ($res = $query_project1->fetch_assoc()) {
-                        echo '<option>' . $res['projectname'] . '</option>';
+                        echo '<option value="' . $res['projectname'] . '">' . $res['projectname'] . '</option>';
                     }
                     ?>
                 </select>
-                <button class="button_01" id="navigation" name="seach">Seach</button>
+<!--                <button class="button_01" id="navigation" name="seach">Seach</button>-->
             </form>
         </div>
         <div class="div_table">
             <table>
-            <tr><th>ID</th><th>Datum</th><th>Zeit</th><th>Beschreibung</th></tr>
+            <tr><th>Datum</th><th>Zeit</th><th>Beschreibung</th><th>Löschen</th></tr>
             <?php
             while ($res = $query_time->fetch_assoc()) {
+                $r = new DateTime ($res['date']);
                 echo '<tr>';
-                echo '<td>' . $res['id'] . '</td>';
-                echo '<td>' . $res['date'] . '</td>';
+                echo '<td>' . $r->format('j.n') . '</td>';
                 echo '<td>' . $res['time'] . '</td>';
                 echo '<td>' . $res['task'] . '</td>';
+                echo '<td><form method="post" action="page_edit.php?projectname='.$_GET['projectname'].'"><button class="button_delete" name="delete" value="'.$res['id'].'">X</button></form></td>';
                 echo '</tr>';
             }
             ?>
             </table>
-        </div>
-        <div>
-            <form method="post" class="div_flex_colum">
-                <input class="input_01" id="navigation" type="number" name="timeid" placeholder="ID" required>
-                <button class="button_01" id="navigation" name="entf">Delete</button>
-                <p class="font_error"> <?php if (isset($_POST['entf'])){echo $error_message;} ?></p>
-            </form>
         </div>
     </div>
 </body>

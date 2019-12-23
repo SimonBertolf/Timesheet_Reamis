@@ -69,7 +69,7 @@ if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
                     <p class="font_03">Eine Übersicht über Projekte und ihre Budgets</p>
                 </div>
                 <form method="get" style="margin-left: 20px">
-                    <select class="button_01" id="button_project" name="projects" onchange="this.form.submit();"style="margin-top: -5px">
+                    <select class="button_01" id="button_project" name="projects" onchange="this.form.submit();" style="margin-top: -5px">
                         <option></option>
                     <?php
                     while($projects = $all_Projects->fetch_assoc()){
