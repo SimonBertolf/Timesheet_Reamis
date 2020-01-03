@@ -139,14 +139,14 @@ function ferien($userid,$date,$time){
 
 function feiertag($userid,$date,$time){
     $db = new class_database();
-    $db->mysql->query("INSERT INTO time (projectid, userid, date, time, task, start, stop) VALUE (1 , $userid, '$date', '$time', 'Feiertage', '08:00', '17:00')");
+    $db->mysql->query("INSERT INTO time (projectid, userid, date, time, task, start, stop) VALUE (3 , $userid, '$date', '$time', 'Feiertage', '08:00', '17:00')");
     $db->close_connection();
 }
 
 
 function krank($userid,$date,$time){
     $db = new class_database();
-    $db->mysql->query("INSERT INTO time (projectid, userid, date, time, task, start, stop) VALUE (1 , $userid, '$date', '$time', 'Krankheit', '08:00', '17:00')");
+    $db->mysql->query("INSERT INTO time (projectid, userid, date, time, task, start, stop) VALUE (2 , $userid, '$date', '$time', 'Krankheit', '08:00', '17:00')");
     $db->close_connection();
 }
 
