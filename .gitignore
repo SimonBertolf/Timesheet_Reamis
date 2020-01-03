@@ -6,5 +6,6 @@
 ## IDE support
 *.buildpath
 *.project
+composer.phar
 /.settings
 /.idea
