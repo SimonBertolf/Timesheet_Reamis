@@ -2,6 +2,7 @@
 require_once '../class/class_database.php';
 require_once '../class/class_time.php';
 require_once '../class/functions.php';
+require_once '../export/export_time.php';
 require_once '../export/export_project.php';
 session_start();
 $time_user = array();

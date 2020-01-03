@@ -1,7 +1,6 @@
 <?php
 require_once '../system/system_report.php';
 require_once '../class/navigation.php';
-require_once '../export/export_time.php';
 
 if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
 ?>
