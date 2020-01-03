@@ -78,7 +78,7 @@ if ($_SESSION['user_typ'] == 'controller' || $_SESSION['user_typ'] == 'admin'){
                     ?>
                     </select>
                     <div class="div_flex_colum" id="piechart<?php echo $project['projectname']; ?>"></div>
-                    <p class="font_03" style="margin-top: -10px">Soll:   <?php echo $soll; ?> </p>
+                    <p class="font_03" style="margin-top: 5px">Soll:   <?php echo $soll; ?> </p>
                     <p class="font_03" style="margin-top: -10px">Ist:    <?php echo $ist; ?> </p>
                     <p class="font_03" style="margin-top: -10px"><?php echo $stunden; ?> </p>
                     <button class="button_01" id="button_project" name="export_project" value="<?php echo $project['projectname']; ?>" style="margin-top: -10px">Export</button>
