@@ -38,7 +38,7 @@ if (isset($_POST['export_monat'])){
     function AbfrageAll($name, $monat)
     {
         $db = new class_database();
-        $comm = ('SELECT * FROM time LEFT JOIN user ON time.userid = user.id LEFT JOIN project ON time.projectid = project.id  WHERE user.username = "'.$name.'" and date LIKE "%-' . $monat . '-%"  AND NOT project.projectname = "Feiertage" AND NOT project.projectname = "Ferien" AND NOT project.projectname = "Krankheit" ORDER BY date ');
+        $comm = ('SELECT * FROM time LEFT JOIN user ON time.userid = user.id LEFT JOIN project ON time.projectid = project.id  WHERE user.username = "'.$name.'" and date LIKE "%-' . $monat . '-%"  AND NOT project.projectname = "Feiertag" AND NOT project.projectname = "Ferien" AND NOT project.projectname = "Krankheit" ORDER BY date ');
         $rows = array();
         $query = $db->mysql->query($comm);
         while ($res = $query->fetch_assoc()) {
@@ -80,7 +80,7 @@ if (isset($_POST['export_monat'])){
     $z = 0;
     $rowsFerien = AbfrageProjekte($name, $monat,'Ferien');
     $zFerien = 0;
-    $rowsFeiertage = AbfrageProjekte($name, $monat,'Feiertage');
+    $rowsFeiertage = AbfrageProjekte($name, $monat,'Feiertag');
     $zFeiertage = 0;
     $rowsKrankheit = AbfrageProjekte($name, $monat,'Krankheit');
     $zKrankheit = 0;
@@ -104,24 +104,28 @@ if (isset($_POST['export_monat'])){
             $spreadsheet->setActiveSheetIndex(0)->setCellValue('D' . $row . '', $savetime);
             $z++;
         }
+        $savetime = 0;
         while ($date->format('Y-m-d') == $rowsFerien[$zFerien]['date']) {
             $total =($rowsFerien[$zFerien]['time']);
             $savetimeFerien += $total;
             $spreadsheet->setActiveSheetIndex(0)->setCellValue('G' . $row . '', $savetimeFerien);
             $zFerien++;
         }
+        $savetimeFerien = 0;
         while ($date->format('Y-m-d') == $rowsFeiertage[$zFeiertage]['date']) {
             $total =($rowsFeiertage[$zFeiertage]['time']);
             $savetimeFeiertage += $total;
-            $spreadsheet->setActiveSheetIndex(0)->setCellValue('G' . $row . '', $savetimeFeiertage);
+            $spreadsheet->setActiveSheetIndex(0)->setCellValue('E' . $row . '', $savetimeFeiertage);
             $zFeiertage++;
         }
+        $savetimeFeiertage = 0;
         while ($date->format('Y-m-d') == $rowsKrankheit[$zKrankheit]['date']) {
             $total =($rowsKrankheit[$zKrankheit]['time']);
             $savetimeKrankheit += $total;
-            $spreadsheet->setActiveSheetIndex(0)->setCellValue('G' . $row . '', $savetimeKrankheit);
+            $spreadsheet->setActiveSheetIndex(0)->setCellValue('F' . $row . '', $savetimeKrankheit);
             $zKrankheit++;
         }
+        $savetimeKrankheit = 0;
         if ($date->format('N') == 7) {
             $row++;
             $summrow = $row;
@@ -218,7 +222,7 @@ if (isset($_POST['export_monat'])){
 //        ->setCellValue('J8', 'Total Monat');
 #endregion
 #region/// ----- Save ----- ///
-    $filename = 'Export_'.$userdaten['name'].'_'.$monat.'_'.$jahr.'.Xlsx';
+    $filename = 'Export_'.$userdaten['username'].'_'.$monat.'_'.$jahr.'.Xlsx';
     $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
     $writer->setIncludeCharts(true);
     $callStartTime = microtime(true);
@@ -226,20 +230,19 @@ if (isset($_POST['export_monat'])){
 #endregion
 }
 
-
-if (file_exists('Export_'.$userdaten['name'].'_'.$monat.'_'.$jahr.'.Xlsx') && isset($_POST['export_monat'])) {
+if (file_exists('Export_'.$userdaten['username'].'_'.$monat.'_'.$jahr.'.Xlsx') && isset($_POST['export_monat'])) {
 
     header('Content-Description: File Transfer');
     header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename='.basename('Export_'.$userdaten['name'].'_'.$monat.'_'.$jahr.'.Xlsx'));
+    header('Content-Disposition: attachment; filename='.basename('Export_'.$userdaten['username'].'_'.$monat.'_'.$jahr.'.Xlsx'));
     header('Content-Transfer-Encoding: binary');
     header('Expires: 0');
     header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
     header('Pragma: public');
-    header('Content-Length: ' . filesize('Export_'.$userdaten['name'].'_'.$monat.'_'.$jahr.'.Xlsx'));
+    header('Content-Length: ' . filesize('Export_'.$userdaten['username'].'_'.$monat.'_'.$jahr.'.Xlsx'));
 
     ob_clean();
     flush();
-    readfile('Export_'.$userdaten['name'].'_'.$monat.'_'.$jahr.'.Xlsx');
+    readfile('Export_'.$userdaten['username'].'_'.$monat.'_'.$jahr.'.Xlsx');
     exit;
 }
