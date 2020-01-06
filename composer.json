@@ -1,12 +1,10 @@
 {
-    "name": "timesheet_reamis",
+    "name": "root/timesheet_reamis",
     "authors": [
         {
-            "name": "Simon Bertolf",
-            "email": "simon.bertolf@reamis.ch"
+            "name": "sd sd",
+            "email": "sdf@sdf.dsf"
         }
     ],
-    "require": {
-        "phpoffice/phpspreadsheet": "^1.10"
-    }
+    "require": {}
 }
