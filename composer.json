@@ -6,5 +6,7 @@
             "email": "sdf@sdf.dsf"
         }
     ],
-    "require": {}
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.8"
+    }
 }
