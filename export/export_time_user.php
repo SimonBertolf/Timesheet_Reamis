@@ -23,7 +23,7 @@ if(isset($_POST['exp'])){
     $woche = array('', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag');
     $monat = $monates[$_POST['monat']];
     $name = $_SESSION['user_username'];
-    $jahr = 2019;
+    $jahr = 2020;
     $row = 9;
     $savedata = 'g';
     $savetime = 0;
